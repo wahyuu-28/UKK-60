@@ -30,7 +30,7 @@ export default function Login() {
                 />
             </div>
 
-            <div className="fixed right-0 top-0 h-screen w-96 lg:w-1/3 bg-white shadow-xl flex flex-col justify-center">
+            <div className="fixed right-0 top-0 h-screen w-96 bg-white shadow-xl flex flex-col justify-center px-4">
                 <div clas>
                     <div className="flex flex-col justify-center items-center pb-16">
                         <h1 className="font-bold font-inter text-center text-[4rem]">
@@ -93,7 +93,7 @@ export default function Login() {
                             <button
                                 type="submit"
                                 disabled={processing}
-                                className="btn bg-black rounded-xl hover:bg-white w-full border font-plus-jakarta border-black hover:text-black transition-all px-2 py-2 text-white mx-16"
+                                className="bg-black rounded-xl hover:bg-white w-full border font-plus-jakarta font-bold border-black hover:text-black transition-all px-2 py-2 text-white mx-16"
                             >
                                 Login
                             </button>

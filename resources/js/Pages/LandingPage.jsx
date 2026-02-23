@@ -15,9 +15,6 @@ export default function Home() {
                 <Hero/>
                 <Services/>
                 <Footer/>
-                <div className='flex justify-center m-3'>
-                    <Link className='bg-[#008BFF] px-2 py-2 hover:bg-[#3F9AAE] rounded-lg transition-all' href="/login">Login</Link>
-                </div>
             </main>
         </div>
 
