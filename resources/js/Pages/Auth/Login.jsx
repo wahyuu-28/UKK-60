@@ -26,7 +26,7 @@ export default function Login() {
                 <img
                     src={LoginIlustration}
                     alt="Login Ilustration"
-                    className=" w-[500px]"
+                    className=" w-10/12"
                 />
             </div>
 
@@ -40,9 +40,9 @@ export default function Login() {
                             Please enter your details to access your account.
                         </p>
                     </div>
-                    <form className="flex flex-col" onSubmit={submit}>
+                    <form className="flex flex-col" onSubmit={submit} noValidate>
                         <div className="flex flex-col items-center gap-5">
-                            <div className="relative flex items-center justify-center mb-2">
+                            <div className="relative flex flex-col justify-center mb-2">
                                 <input
                                     type="email"
                                     name="email"
@@ -55,14 +55,18 @@ export default function Login() {
                                     }
                                 />
                                 {/* <p className="invisible peer-invalid:visible">Please input valid email</p> */}
-                                <label className="font-plus-jakarta opacity-40 absolute left-4 text-lg tracking-wide duration-200 pointer-events-none
+                                <label className="font-plus-jakarta opacity-40 absolute left-4 top-2 text-lg tracking-wide duration-200 pointer-events-none
                                 peer-focus:font-semibold peer-focus:opacity-100 peer-focus:text-sm peer-focus:text-[#1CB3C8]
                                 peer-focus:-translate-y-8 peer-placeholder-shown:-translate-y-0 peer-placeholder-shown:opacity-40 peer-placeholder-shown:text-lg
                                 peer-[:not(placeholder-shown)]:-translate-y-8 peer-[:not(placeholde-shown)]:opacity-100 peer-[:not(placeholde-shown)]:font-semibold peer-[:not(placeholde-shown)]:text-sm">
                                     Email
                                 </label>
+                                {errors.email && (
+                                    <p className="text-red-600 font-inter font-medium text-start text-sm px-2">{errors.email}</p>
+                                )}
                             </div>
-                            <div className="relative flex items-center justify-center">
+
+                            <div className="relative flex flex-col justify-center">
                                 <input
                                     type={password ? 'text' : 'password'}
                                     name="password"
@@ -73,19 +77,22 @@ export default function Login() {
                                         setData("password", e.target.value)
                                     }
                                 />
-                                <label className="font-plus-jakarta opacity-40 absolute left-4 text-lg tracking-wide duration-200 pointer-events-none flex items-center gap-[5px]
+                                <label className="font-plus-jakarta opacity-40 absolute left-4 top-2 text-lg tracking-wide duration-200 pointer-events-none flex items-center gap-[5px]
                                 peer-focus:font-semibold peer-focus:opacity-100 peer-focus:text-sm peer-focus:text-[#1CB3C8]
                                 peer-focus:-translate-y-8 peer-placeholder-shown:-translate-y-0 peer-placeholder-shown:opacity-40 peer-placeholder-shown:text-lg
                                 peer-[:not(placeholder-shown)]:-translate-y-8 peer-[:not(placeholde-shown)]:opacity-100 peer-[:not(placeholder-shown)]:font-semibold peer-[:not(placeholde-shown)]:text-sm">
                                     Password
                                 </label>
-                                <button type="button" onClick={() => setPassword(!password)} className="absolute right-3 text-gray-500 focus:outline-none hover:text-[#1CB3C8] transition-all">
+                                <button type="button" onClick={() => setPassword(!password)} className="absolute right-3 text-gray-500 hover:text-[#1CB3C8] transition-all">
                                     {password ? (
                                         <IoMdEyeOff size={22} />
                                     ) : (
                                         <IoMdEye size={22} />
                                     )}
                                 </button>
+                                {errors.password && (
+                                    <p className="text-red-600 font-inter font-medium text-start text-sm px-2">{errors.password}</p>
+                                )}
                             </div>
 
                         </div>

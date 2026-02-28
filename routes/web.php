@@ -33,10 +33,6 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
         return inertia('Admin/Sidebar');
     });
 
-    Route::get('/aspirations', function () {
-        return inertia('Admin/Aspirations');
-    });
-
     Route::get('/categories', function () {
         return inertia('Admin/Categories');
     });
@@ -44,6 +40,10 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::get('/history', function () {
         return inertia('Admin/History');
     });
+
+    Route::get('/aspirations/{aspiration}', [AdminController::class, 'showAspiration'])->name('showAspiration');
+
+    Route::get('/aspirations', [AdminController::class, 'aspirationsPage']);
 
     Route::get('/users', [AdminController::class, 'addStudent']);
 

@@ -12,11 +12,11 @@ export default function Home() {
     }
     return (
         <Sides>
-             <Head title='Home'/>
-
+            <Head title='Home' />
+            
             <h5 className='text-lg font-plus-jakarta flex font-bold'>Home</h5>
             <h1 className='text-5xl font-bold font-plus-jakarta'>Home Overview</h1>
-            <h1 className='font-plus-jakarta'>Let's see whats new on your dashboard</h1>
+            <h1 className='font-plus-jakarta'>Here's a list of the user for you</h1>
 
 
             <div className='grid grid-cols-4 gap-4 mt-[40px]'>

@@ -14,6 +14,10 @@ class AuthController extends Controller
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required'
+        ], [
+            'email.required' => 'Email diperlukan',
+            'email.email' => 'Email harus memiliki @',
+            'password.required' => 'Masukan Password anda'
         ]);
 
         if (Auth::attempt($credentials)) {
@@ -21,30 +25,10 @@ class AuthController extends Controller
             return Auth::user()->redirectByRole();
         }
 
-        return back()->withErrors('Gagal Login');
+        return back()->withErrors([
+            'email' => 'Email atau Password tidak valid'
+        ]);
     }
-
-    // public function  register(Request $request)
-    // {
-    //     $validated = $request->validate([
-    //         'name' => 'required',
-    //         'email' => 'required|email|unique:users,email',
-    //         'password' => 'required',
-    //         'role' => 'required'
-    //     ]);
-
-    //     User::create([
-    //         'name' => $validated['name'],
-    //         'email' => $validated['email'],
-    //         'password' => Hash::make($validated['password']),
-    //         'role' => $validated['role'],
-    //     ]);
-
-    //     return redirect()->route('homeAdmin');
-    //     Auth::login();
-
-    //     return $user->redirectByRole();
-    // }
 
     public function logout(Request $request)
     {

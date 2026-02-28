@@ -74,7 +74,6 @@ export default function Aspirations({ aspirations, categories }) {
                 {aspirations.data.map((asp) => (
                     <div key={asp.id}>
                         <Link>
-
                             <div className='bg-white rounded-lg shadow-lg hover:-translate-y-3 px-2 py-2 duration-200'>
                                 <div className='flex justify-center'>
                                     <img src={`/storage/${asp.photo}`} className='rounded-md' />
@@ -90,8 +89,8 @@ export default function Aspirations({ aspirations, categories }) {
                                 `}
                                     >{asp.status}</span>
                                 </div>
-                                <p className='font-inter line-clamp-2 font-medium'>{asp.caption}</p>
-                                <p className='font-inter text-[12px] text-end'>- {formatDistanceStrict(new Date(asp.created_at), new Date(), {
+                                <p className='font-inter line-clamp-3 font-medium'>{asp.caption}</p>
+                                <p className='font-inter text-[10px] text-end'>- {formatDistanceStrict(new Date(asp.created_at), new Date(), {
                                     addSuffix: true,
                                     locale: id
                                 })}</p>

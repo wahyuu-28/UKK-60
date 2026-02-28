@@ -17,7 +17,7 @@ export default function Home() {
 
             <div className='grid grid-cols-4 gap-4 mt-[40px]'>
                 {/* Waiting */}
-                <div className='bg-white p-6 rounded-2xl border-1 border-gray-400 transition-all shadow-md w-full'>
+                <div className='bg-white p-6 rounded-2xl border-2 border-gray-100 transition-all shadow-md w-full'>
                     {/* icon dari lucide icons */}
                     <div className='flex justify-between items-start mb-4'>
                         <div className='p-2 rounded-xl bg-[#cffafe] border'>

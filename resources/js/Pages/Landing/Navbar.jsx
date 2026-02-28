@@ -1,5 +1,7 @@
+import { Link } from '@inertiajs/react';
 import React, { useState } from 'react';
 import { HiMenuAlt3, HiX } from 'react-icons/hi'; // Icon buat mobile menu
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,12 +22,12 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
-          <a href="#" className="text-gray-600 font-plus-jakarta hover:text-indigo-600 font-medium transition">Features</a>
-          <a href="#" className="text-gray-600 font-plus-jakarta hover:text-indigo-600 font-medium transition">Pricing</a>
-          <a href="#" className="text-gray-600 font-plus-jakarta hover:text-indigo-600 font-medium transition">About</a>
-          <button className="bg-[#2d2654] text-white px-6 py-2.5 rounded-lg font-bold hover:opacity-90 transition shadow-lg shadow-indigo-100">
+          <a href="#hero" className="text-gray-600 font-plus-jakarta hover:text-indigo-600 font-medium transition">Home</a>
+          <a href="#services" className="text-gray-600 font-plus-jakarta hover:text-indigo-600 font-medium transition">Services</a>
+          <a href="#recent" className="text-gray-600 font-plus-jakarta hover:text-indigo-600 font-medium transition">About</a>
+          <Link href={'/login'} as={'button'} className="bg-[#2d2654] text-white px-6 py-2.5 rounded-lg font-bold hover:opacity-90 transition shadow-lg shadow-indigo-100">
             Get Started
-          </button>
+          </Link>
         </div>
 
         {/* Mobile Button */}
@@ -39,9 +41,9 @@ const Navbar = () => {
       {/* Mobile Menu Dropdown */}
       {isOpen && (
         <div className="md:hidden bg-white border-b border-gray-100 absolute w-full px-6 py-6 flex flex-col gap-4 shadow-xl">
-          <a href="#" className="text-gray-600 font-medium border-b pb-2">Features</a>
-          <a href="#" className="text-gray-600 font-medium border-b pb-2">Pricing</a>
-          <a href="#" className="text-gray-600 font-medium border-b pb-2">About</a>
+          <a href="#hero" className="text-gray-600 font-medium border-b pb-2">Home</a>
+          <a href="#services" className="text-gray-600 font-medium border-b pb-2">Services</a>
+          <a href="#recent" className="text-gray-600 font-medium border-b pb-2">About</a>
           <button className="bg-[#2d2654] text-white px-6 py-3 rounded-lg font-bold">
             Get Started
           </button>

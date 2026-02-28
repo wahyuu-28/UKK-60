@@ -95,8 +95,8 @@ export default function Users({ users }) {
                             </div>
                             <div className='px-4 py-4 font-semibold'>
                                 <span className={`px-4 py-2 rounded-full
-                                ${user.role === 'admin' && 'rounded-full border bg-blue-100 text-blue-600'}
-                                ${user.role === 'student' && 'rounded-full border bg-green-100 text-green-600'}
+                                ${user.role === 'admin' && 'rounded-full border capitalize bg-blue-100 text-blue-600'}
+                                ${user.role === 'student' && 'rounded-full capitalize border bg-green-100 text-green-600'}
                                 `}>
                                     {user.role}
                                 </span>

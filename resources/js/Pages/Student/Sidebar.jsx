@@ -12,7 +12,7 @@ export default function Sidebar() {
     }
     return (
         <aside className="bg-white flex flex-col min-h-screen left-0 w-60 shadow-xl">
-            <p className="flex justify-center items-center font-bold text-3xl">Logo</p>
+            <p className="flex justify-center items-center font-plus-jakarta font-bold text-3xl">PeaceSchool</p>
             <p className="flex justify-start items-start mb-2 mt-4 ml-8 opacity-60 font-plus-jakarta">Main Menu</p>
             <div className="flex flex-col justify-start items-start gap-2 ml-12">
                 <Link href={"/student/home"}

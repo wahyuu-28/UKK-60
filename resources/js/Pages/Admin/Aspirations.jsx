@@ -1,68 +1,48 @@
 import React from 'react'
 import Side from '../Layout/Side'
 import { IoIosArrowForward } from 'react-icons/io'
-import { Head } from '@inertiajs/react'
+import { Head, Link } from '@inertiajs/react'
 import Kyoto from '../../../../public/photo/Kyoto.jpg'
+import { formatDistanceStrict } from 'date-fns'
+import { id } from 'date-fns/locale'
 
-export default function Aspirations() {
-  return (
+export default function Aspirations({ aspirations }) {
+    return (
         <Side>
             <Head title='Responses' />
             <h5 className='text-lg font-plus-jakarta font-medium flex'>Home <IoIosArrowForward className='flex justify-center mt-2 mr-1 text-lg' /><b>Aspirations</b></h5>
             <h1 className='text-5xl font-bold font-plus-jakarta'>Aspirations Overview</h1>
             <h1 className='font-plus-jakarta'>Here's a list of the user for you</h1>
 
-           <div className='flex flex-row gap-6 justify-center'>
-                <div className='bg-white flex flex-col px-4 py-4 rounded-lg w-64'>
-                    <div className='flex justify-between items-center'>
-                        <h3 className='text-2xl font-semibold'>Judul</h3>
-                        <span className={`rounded-full h-5 flex items-center bg-yellow-200 border px-4 py-2 `}>
-                            <p className='font-inter text-yellow-500'>Proccess</p>
-                        </span>
+            <div className='grid grid-cols-3 gap-6 my-12 justify-center'>
+                {aspirations.map((asp) => (
+                    <div key={asp.id}>
+                        <Link href={`/admin/aspirations/${asp.id}`}>
+                            <div className='bg-white flex flex-col hover:-translate-y-2 hover:shadow-xl shadow-md px-2 py-2 rounded-lg duration-300'>   
+                                <div className='flex justify-between items-center'>
+                                    <h1 className='font-inter font-semibold text-2xl'>
+                                        {asp.subject}
+                                    </h1>
+                                    <span className={`text-sm font-inter rounded-full font-semibold h-fit px-2 ${asp.status === 'Submitted' ? 'bg-gray-200 text-gray-600' :
+                                        asp.status === 'Verified' ? 'bg-green-200 text-green-600' :
+                                            asp.status === 'Proccess' ? 'bg-amber-200 text-amber-600' :
+                                                asp.status === 'Complete' ? 'bg-blue-200 text-blue-600' :
+                                                    ''
+                                        }`}>
+                                        {asp.status}
+                                    </span>
+                                </div>
+                                <p className='font-inter font-medium text-gray-500 line-clamp-2'>{asp.caption}</p>
+                                <p className='font-inter text-[10px] text-end'>- {formatDistanceStrict(new Date(asp.created_at), new Date(), {
+                                    addSuffix: true,
+                                    locale: id
+                                })}</p>
+                            </div>
+                        </Link>
                     </div>
-                    <div className='font-inter'>
-                        <p className='font-light line-clamp-2'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error nostrum beatae saepe ad. Non nihil neque, labore distinctio eum dolore quasi? Dolor, temporibus. Consectetur, quod?</p>
-                        <p className='text-end font-medium text-sm mt-[5px]'>22-1-2022</p>
-                    </div>
-                </div>
-                <div className='bg-white flex flex-col px-2 py-2 rounded-lg w-64'>
-                    <div className='flex justify-between items-center'>
-                        <h3 className='text-2xl font-semibold'>Judul</h3>
-                        <span className={`rounded-full h-5 flex items-center bg-yellow-200 border px-4 py-2 `}>
-                            <p className='font-inter text-yellow-500'>Proccess</p>
-                        </span>
-                    </div>
-                    <div className='font-inter'>
-                        <p className='font-light line-clamp-2'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error nostrum beatae saepe ad. Non nihil neque, labore distinctio eum dolore quasi? Dolor, temporibus. Consectetur, quod?</p>
-                        <p className='text-end font-medium text-sm mt-[5px]'>22-1-2022</p>
-                    </div>
-                </div>
-                <div className='bg-white flex flex-col px-2 py-2 rounded-lg w-64'>
-                    <div className='flex justify-between items-center'>
-                        <h3 className='text-2xl font-semibold'>Judul</h3>
-                        <span className={`rounded-full h-5 flex items-center bg-yellow-200 border px-4 py-2 `}>
-                            <p className='font-inter text-yellow-500'>Proccess</p>
-                        </span>
-                    </div>
-                    <div className='font-inter'>
-                        <p className='font-light line-clamp-2'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error nostrum beatae saepe ad. Non nihil neque, labore distinctio eum dolore quasi? Dolor, temporibus. Consectetur, quod?</p>
-                        <p className='text-end font-medium text-sm mt-[5px]'>22-1-2022</p>
-                    </div>
-                </div>
-                <div className='bg-white flex flex-col px-2 py-2 rounded-lg w-64'>
-                    <div className='flex justify-between items-center'>
-                        <h3 className='text-2xl font-semibold'>Judul</h3>
-                        <span className={`rounded-full h-5 flex items-center bg-yellow-200 border px-4 py-2 `}>
-                            <p className='font-inter text-yellow-500'>Proccess</p>
-                        </span>
-                    </div>
-                    <div className='font-inter'>
-                        <p className='font-light line-clamp-2'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error nostrum beatae saepe ad. Non nihil neque, labore distinctio eum dolore quasi? Dolor, temporibus. Consectetur, quod?</p>
-                        <p className='text-end font-medium text-sm mt-[5px]'>22-1-2022</p>
-                    </div>
-                </div>
-           </div>
+                ))}
+            </div>
         </Side>
-  )
+    )
 }
 

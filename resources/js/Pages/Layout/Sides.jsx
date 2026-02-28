@@ -6,7 +6,7 @@ export default function Sides({ children }) {
     <div className='flex min-h-screen'>
         <Sidebar/>
     <div className='flex-1'>
-            <main className='px-8'>
+            <main className='pf-8'>
                 {children}
             </main>
         </div>

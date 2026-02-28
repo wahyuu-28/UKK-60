@@ -4,6 +4,7 @@ import Navbar from './Landing/Navbar'
 import Hero from './Landing/Hero'
 import Services from './Landing/Services'
 import Footer from './Landing/Footer'
+import Recent from './Landing/Recent'
 
 export default function Home() {
     return (
@@ -14,6 +15,7 @@ export default function Home() {
             <main className='pt-20'>
                 <Hero/>
                 <Services/>
+                <Recent/>
                 <Footer/>
             </main>
         </div>
