@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('subject');
-            $table->enum('status', ['Submitted', 'Verified', 'Proccess', 'Complete'])->default('Submitted');
-            $table->string('photo');
+            $table->enum('status', ['Submitted', 'Rejected', 'Proccess', 'Completed'])->default('Submitted');
+            $table->string('photo')->nullable();
             $table->text('location');
             $table->enum('urgency', ['low', 'medium', 'high', 'emergensy'])->default('low');
             $table->text('caption');

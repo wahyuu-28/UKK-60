@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Aspiration;
 use App\Models\Category;
+use App\Models\Notification;
+use App\Models\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -11,18 +13,57 @@ use Inertia\Inertia;
 
 class StudentController extends Controller
 {
+    public function homePage()
+    {
+        $userId = Auth::id();
+
+        return inertia('Student/Home', [
+            'status' => [
+                'submitted' => Aspiration::where('user_id', $userId)->where('status', 'Submitted')->count(),
+                'proccess'  => Aspiration::where('user_id', $userId)->where('status', 'Proccess')->count(),
+                'completed' => Aspiration::where('user_id', $userId)->where('status', 'Completed')->count(),
+                'rejected'  => Aspiration::where('user_id', $userId)->where('status', 'Rejected')->count(),
+            ],
+            'recentAspi' => Auth::user()->aspiration()
+                ->latest()
+                ->take(4)
+                ->get(),
+        ]);
+    }
+
     public function aspirationPage(Request $request)
     {
-        $categories = Category::all();
         $search = $request->input('search');
-        $aspirations = Aspiration::with('category')->when($search, function ($q, $search) {
-            $q->where('subject', 'like', "%{$search}%");
-        })->latest()->paginate(25);
+        $sort = $request->input('sort');
+        $filters = $request->only(['search', 'sort', 'status', 'category']);
+
+        $query = Aspiration::with('category')
+            ->when($search, function ($query, $search) {
+                $query->where('subject', 'like', "%{$search}%")
+                    ->orWhere('location', 'like', "%{$search}%");
+            })
+            ->when($request->status, function ($query, $status) {
+                $query->where('status', $status);
+            })
+            ->when($request->category, function ($query, $category) {
+                $query->where('category_id', $category);
+            });
+
+
+        if ($sort === 'name') {
+            $query->orderBy('subject', 'asc');
+        } elseif ($sort === 'oldest') {
+            $query->orderBy('created_at', 'asc');
+        } else {
+            $query->orderBy('created_at', 'desc');
+        }
+
+        $aspirations = $query->paginate(100)->withQueryString();
 
         return Inertia::render('Student/Aspirations', [
             'aspirations' => $aspirations,
-            'search' => $search,
-            'categories' => $categories
+            'categories' => Category::all(),
+            'filters' => $filters,
         ]);
     }
 
@@ -62,10 +103,24 @@ class StudentController extends Controller
             'category_id' => $validated['category_id']
         ]);
 
-        return redirect('/student/aspiration');
+        return redirect('/student/aspirations');
     }
 
-    public function showAspiration(Request $request){
+    public function showAspiration(Aspiration $aspiration)
+    {
+        $aspiration->load(['user', 'category']);
 
+        return inertia('Student/Detail', [
+            'aspiration' => $aspiration,
+            'categories' => Category::all()
+        ]);
+    }
+
+    public function pageNotif()
+    {
+        $notifications = Notification::with(['fromUser', 'aspiration', 'respons'])->where('user_id', Auth::id())->latest()->get();
+        return inertia('Student/Responses', [
+            'Notifications' => $notifications
+        ]);
     }
 }

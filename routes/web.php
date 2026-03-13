@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SendResponseController;
 use App\Http\Controllers\StudentController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -25,41 +26,47 @@ Route::middleware('guest')->group(function () {
 
 // Route Admin
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
-    Route::get('/home', function () {
-        return inertia('Admin/Home');
-    })->name('homeAdmin');
+    Route::get('/home', [AdminController::class, 'pageHome'])->name('homeAdmin');
 
-    Route::get('/sidebar', function () {
-        return inertia('Admin/Sidebar');
-    });
+    Route::get('/respons/{aspiration}', [AdminController::class, 'pageRespons']);
 
-    Route::get('/categories', function () {
-        return inertia('Admin/Categories');
-    });
+    Route::post('/aspirations/{aspiration}/respons', [AdminController::class, 'respons']);
 
-    Route::get('/history', function () {
-        return inertia('Admin/History');
-    });
+    Route::post('/send', SendResponseController::class);
+
+    Route::get('/categories', [AdminController::class, 'pageCategory'])->name('pageCategory');
+
+    Route::post('/categories', [AdminController::class, 'addCategory'])->name('addCategory');
 
     Route::get('/aspirations/{aspiration}', [AdminController::class, 'showAspiration'])->name('showAspiration');
 
     Route::get('/aspirations', [AdminController::class, 'aspirationsPage']);
 
-    Route::get('/users', [AdminController::class, 'addStudent']);
+    Route::put('/aspirations/{aspiration}', [AdminController::class, 'editAspiration'])->name('editAspiration');
 
-    Route::post('/add/user', [AdminController::class, 'addStudent'])->name('addStudent');
+    Route::delete('/aspirations/{aspiration}', [AdminController::class, 'destroyAspiration'])->name('destroyAspiration');
+
+    Route::put('/categories/{category}', [AdminController::class, 'editCategory']);
+
+    Route::delete('/categories/{category}', [AdminController::class, 'desCategory']);
+
+    Route::get('/users', [AdminController::class, 'pageUsers']);
+
+    Route::post('/users', [AdminController::class, 'addStudent'])->name('addStudent');
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
 // Route Siswa
 Route::middleware(['auth', 'role:student'])->prefix('student')->group(function () {
-    Route::get('/home', function () {
-        return inertia('Student/Home');
-    })->name('homeStudent');
+    Route::get('/home', [StudentController::class, 'homePage'])->name('homeStudent');
 
-    Route::get('/aspiration', [StudentController::class, 'aspirationPage']);
-    Route::post('/aspiration', [StudentController::class, 'addAspirations']);
+    Route::get('/notifications', [StudentController::class, 'pageNotif']);
+
+    Route::get('/aspirations/{aspiration}', [StudentController::class, 'showAspiration']);
+
+    Route::get('/aspirations', [StudentController::class, 'aspirationPage']);
+    Route::post('/aspirations', [StudentController::class, 'addAspirations']);
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

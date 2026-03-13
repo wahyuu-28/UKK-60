@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Side from '../Layout/Side'
 import { Head, router, useForm, usePage } from '@inertiajs/react'
 import { MdAdd } from 'react-icons/md'
@@ -6,6 +6,7 @@ import { IoIosArrowForward } from 'react-icons/io'
 import { CiSearch } from 'react-icons/ci'
 import { GrFormNext, GrFormPrevious, GrPrevious } from "react-icons/gr";
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react'
+import { AiOutlineRight } from 'react-icons/ai'
 
 export default function Users({ users }) {
 
@@ -22,17 +23,32 @@ export default function Users({ users }) {
     const [isOpen, setIsOpen] = useState(false)
     const [search, setSearch] = useState(initialSearch || '')
 
+    // liveSearch
+    useEffect(() => {
+        const filter = setTimeout(() => {
+            router.get('/admin/users', {
+                search: search
+            }, {
+                preserveState: true,
+                preserveScroll: true,
+                replace: true
+            })
+        }, 300)
+        return () => clearTimeout(filter)
+    }, [search])
+
     function handleSearch(e) {
         e.preventDefault()
         router.get('/admin/users', { search }, {
             preserveState: true,
+            preserveScroll: true,
             replace: true
         })
     }
 
     function submit(e) {
         e.preventDefault()
-        post('/admin/add/user', {
+        post('/admin/users', {
             onSuccess: () => {
                 setIsOpen(false)
                 reset()
@@ -47,30 +63,35 @@ export default function Users({ users }) {
 
     // console.log(users)
     function handlePagination(url) {
-        if (url) router.visit(url)
+        if (url) router.visit(url, {
+            preserveScroll: true,
+            preserveState: true,
+        })
     }
 
     return (
         <Side>
             <Head title='Users' />
-            <h5 className='text-lg font-plus-jakarta font-medium flex'>Home <IoIosArrowForward className='flex justify-center mt-2 mr-1 text-lg' /><b>User</b></h5>
+            <h5 className='text-lg font-plus-jakarta font-medium flex'>Home <AiOutlineRight className='flex mt-[6px] text-lg' /><b>Users</b></h5>
             <h1 className='text-5xl font-bold font-plus-jakarta'>Users Overview</h1>
             <h1 className='font-plus-jakarta'>Here's a list of the user for you</h1>
 
-            {/* Searchbar + buttn */}
-            <div className='mt-12 flex items-center justify-end gap-3' >
-                {/* Search */}
-                <form className='flex items-center' onSubmit={handleSearch}>
-                    <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} className='rounded-l-md outline-none py-[4px] px-2' placeholder='Find by email or name...' />
-                    <button className='bg-[#1CB3C8] rounded-r-md py-2 px-2'><CiSearch /></button>
-                </form>
+
+            <div className='flex items-center w-full gap-4'>
+                <div className='flex-1'>
+                    {/* Search */}
+                    <form className='flex items-center' onSubmit={handleSearch}>
+                        <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} className='rounded-lg outline-none shadow-sm border-2 py-[6px] px-2 w-full' placeholder='Find by email or name...' />
+                    </form>
+                </div>
 
                 {/* Add */}
-                <button className='bg-[#3C415E] px-2 flex font-plus-jakarta font-semibold rounded-xl hover:bg-[#1CB3C8] hover:text-[#3C415E] text-white transition-all h-fit py-[4px]'
+                <button className='bg-[#3C415E] px-2 flex font-plus-jakarta font-semibold rounded-lg hover:bg-[#1CB3C8] hover:text-[#3C415E] text-white transition-all h-fit py-2'
                     onClick={() => setIsOpen(true)}><MdAdd className='flex justify-center mt-1 mr-1 text-xl' />Add User</button>
             </div>
 
-            <div className='bg-white rounded-lg overflow-hidden shadow mt-2'>
+
+            <div className='bg-white rounded-lg overflow-hidden shadow mt-8'>
                 {/* heade */}
                 <div className='grid grid-cols-4 bg-gray-300 font-inter font-bold'>
                     <h3 className='px-4 py-2'>No</h3>
@@ -150,28 +171,28 @@ export default function Users({ users }) {
                             <div className='flex flex-col mx-4 my-4 gap-4'>
                                 <div className='flex flex-col'>
                                     <label className='font-plus-jakarta font-semibold'>Username</label>
-                                    <input type="text" name="name" value={data.name} onChange={(e) => setData("name", e.target.value)} className='border-2 border-gray-400 rounded-lg opacity-50 p-1 focus:border-[#1CB3C8] outline-none duration-200 ' />
+                                    <input type="text" name="name" value={data.name} onChange={(e) => setData("name", e.target.value)} className='border-2 border-gray-400/50 rounded-lg p-1 focus:border-[#1CB3C8] outline-none duration-200 ' />
                                 </div>
                                 <div className='flex flex-col'>
                                     <label className='font-plus-jakarta font-semibold'>Email</label>
-                                    <input type="email" name="email" value={data.email} onChange={(e) => setData("email", e.target.value)} className='border-2 border-gray-400 rounded-lg opacity-50 p-1 focus:border-[#1CB3C8] outline-none duration-200 ' />
+                                    <input type="email" name="email" value={data.email} onChange={(e) => setData("email", e.target.value)} className='border-2 border-gray-400/50 rounded-lg p-1 focus:border-[#1CB3C8] outline-none duration-200 ' />
                                 </div>
                                 <div className='flex flex-col'>
                                     <label className='fon2t-plus-jakarta font-semibold'>Password</label>
-                                    <input type="text" name="password" value={data.password} onChange={(e) => setData("password", e.target.value)} className='border-2 border-gray-400 rounded-lg opacity-50 p-1 focus:border-[#1CB3C8] outline-none duration-200 ' />
+                                    <input type="text" name="password" value={data.password} onChange={(e) => setData("password", e.target.value)} className='border-2 border-gray-400/50 rounded-lg p-1 focus:border-[#1CB3C8] outline-none duration-200 ' />
                                 </div>
                                 <div className='flex flex-col'>
                                     <label className='font-plus-jakarta font-semibold text-gray-400'><i>Role</i></label>
-                                    <input type="text" name="role" disabled value={'student'} onChange={(e) => setData("role", e.target.value)} className='border-2 border-gray-400 rounded-lg opacity-50 p-1 focus:border-[#1CB3C8] outline-none duration-200 ' />
+                                    <input type="text" name="role" disabled value={'student'} onChange={(e) => setData("role", e.target.value)} className='border-2 border-gray-400/50 rounded-lg p-1 focus:border-[#1CB3C8] outline-none duration-200 ' />
                                 </div>
 
                                 <div className='flex flex-col'>
                                     <label className='font-plus-jakarta font-semibold'>NIS</label>
-                                    <input type="text" name="NIS" value={data.NIS} onChange={(e) => setData("NIS", e.target.value)} className='border-2 border-gray-400 rounded-lg opacity-50 p-1 focus:border-[#1CB3C8] outline-none duration-200 ' />
+                                    <input type="text" name="NIS" value={data.NIS} onChange={(e) => setData("NIS", e.target.value)} className='border-2 border-gray-400/50 rounded-lg p-1 focus:border-[#1CB3C8] outline-none duration-200 ' />
                                 </div>
                                 <div className='flex flex-col'>
                                     <label className='font-plus-jakarta font-semibold'>Grade</label>
-                                    <input type="text" name="grade" value={data.grade} onChange={(e) => setData("grade", e.target.value)} className='border-2 border-gray-400 rounded-lg opacity-50 p-1 focus:border-[#1CB3C8] outline-none duration-200 ' />
+                                    <input type="text" name="grade" value={data.grade} onChange={(e) => setData("grade", e.target.value)} className='border-2 border-gray-400/50 rounded-lg p-1 focus:border-[#1CB3C8] outline-none duration-200 ' />
                                 </div>
                             </div>
 

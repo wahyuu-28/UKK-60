@@ -95,8 +95,8 @@ export default function Recent() {
                         <span className={`rounded-full font-inter font-semibold px-2 h-fit shadow-lg absolute top-4 right-4
                             ${asp.status === 'Submitted' ? 'bg-gray-200 text-gray-600' :
                                 asp.status === 'Proccess' ? 'bg-amber-200 text-amber-600' :
-                                    asp.status === 'Verified' ? 'bg-blue-200 text-blue-600' :
-                                        asp.status === 'Complete' ? 'bg-green-200 text-green-600' :
+                                    asp.status === 'Rejected' ? 'bg-red-200 text-red-600' :
+                                        asp.status === 'Complete' ? 'bg-blue-200 text-blue-600' :
                                             ''
                             }
                             `}

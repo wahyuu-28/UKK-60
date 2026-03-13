@@ -18,7 +18,7 @@ export default function Login() {
     }
     return (
 
-        <div className="min-h-screen flex relative justify-center mr-96">
+        <div className="min-h-screen flex relative justify-center lg:mr-96">
             <Head title="Login" />
 
 
@@ -30,8 +30,8 @@ export default function Login() {
                 />
             </div>
 
-            <div className="fixed right-0 top-0 h-screen w-96 bg-white shadow-xl flex flex-col justify-center px-4">
-                <div clas>
+            <div className="fixed inset-0 lg:left-auto lg:right-0 h-screen w-full lg:w-96 bg-white shadow-xl flex flex-col justify-center px-4">
+                <div>
                     <div className="flex flex-col justify-center items-center pb-16">
                         <h1 className="font-bold font-inter text-center text-[4rem]">
                             Sign In
@@ -66,41 +66,42 @@ export default function Login() {
                                 )}
                             </div>
 
-                            <div className="relative flex flex-col justify-center">
-                                <input
-                                    type={password ? 'text' : 'password'}
-                                    name="password"
-                                    placeholder="  "
-                                    className="peer border-2 outline-none focus:border-[#1CB3C8] border-gray-300 bg-inherit w-80 rounded-xl px-3 py-2"
-                                    value={data.password}
-                                    onChange={(e) =>
-                                        setData("password", e.target.value)
-                                    }
-                                />
-                                <label className="font-plus-jakarta opacity-40 absolute left-4 top-2 text-lg tracking-wide duration-200 pointer-events-none flex items-center gap-[5px]
+                            <div className="flex flex-col">
+                                <div className="relative flex flex-col justify-center">
+                                    <input
+                                        type={password ? 'text' : 'password'}
+                                        name="password"
+                                        placeholder="  "
+                                        className="peer border-2 outline-none focus:border-[#1CB3C8] border-gray-300 bg-inherit w-80 rounded-xl px-3 py-2"
+                                        value={data.password}
+                                        onChange={(e) =>
+                                            setData("password", e.target.value)
+                                        }
+                                    />
+                                    <label className="font-plus-jakarta opacity-40 absolute left-4 top-2 text-lg tracking-wide duration-200 pointer-events-none flex items-center gap-[5px]
                                 peer-focus:font-semibold peer-focus:opacity-100 peer-focus:text-sm peer-focus:text-[#1CB3C8]
                                 peer-focus:-translate-y-8 peer-placeholder-shown:-translate-y-0 peer-placeholder-shown:opacity-40 peer-placeholder-shown:text-lg
                                 peer-[:not(placeholder-shown)]:-translate-y-8 peer-[:not(placeholde-shown)]:opacity-100 peer-[:not(placeholder-shown)]:font-semibold peer-[:not(placeholde-shown)]:text-sm">
-                                    Password
-                                </label>
-                                <button type="button" onClick={() => setPassword(!password)} className="absolute right-3 text-gray-500 hover:text-[#1CB3C8] transition-all">
-                                    {password ? (
-                                        <IoMdEyeOff size={22} />
-                                    ) : (
-                                        <IoMdEye size={22} />
+                                        Password
+                                    </label>
+                                    <button type="button" onClick={() => setPassword(!password)} className="absolute right-3 text-gray-500 hover:text-[#1CB3C8] transition-all">
+                                        {password ? (
+                                            <IoMdEyeOff size={22} />
+                                        ) : (
+                                            <IoMdEye size={22} />
+                                        )}
+                                    </button>
+                                </div>
+                                    {errors.password && (
+                                        <p className="text-red-600 font-inter font-medium text-start text-sm px-2">{errors.password}</p>
                                     )}
-                                </button>
-                                {errors.password && (
-                                    <p className="text-red-600 font-inter font-medium text-start text-sm px-2">{errors.password}</p>
-                                )}
                             </div>
-
                         </div>
                         <div className="flex justify-center items-center mt-10">
                             <button
                                 type="submit"
                                 disabled={processing}
-                                className="bg-black rounded-xl hover:bg-white w-full border font-plus-jakarta font-bold border-black hover:text-black transition-all px-2 py-2 text-white mx-16"
+                                className="bg-black rounded-xl hover:bg-white lg:w-full sm:w-[300px] border font-plus-jakarta font-bold border-black hover:text-black transition-all px-2 py-2 text-white mx-16"
                             >
                                 Login
                             </button>

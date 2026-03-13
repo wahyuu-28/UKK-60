@@ -19,6 +19,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'role',
         'password',
     ];
 
@@ -55,10 +56,15 @@ class User extends Authenticatable
     }
 
     public function siswa(){
-        return $this->hasMany(Student::class);
+        return $this->hasOne(Student::class);
     }
 
     public function aspiration() {
         return $this->hasMany(Aspiration::class);
+    }
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class, 'user_id');
     }
 }
