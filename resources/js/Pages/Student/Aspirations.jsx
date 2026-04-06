@@ -130,10 +130,12 @@ export default function Aspirations({ aspirations, categories, filters }) {
             forceFormData: true,
             onSuccess: () => {
                 toast.success('Berhasil membuat aspirasi baru!')
-                toast.error('Gagal membuat aspirasi baru!, mohon ikuti panduan')
                 setIsOpen(false)
                 reset()
                 setPreview(null)
+            },
+            onError: () => {
+                toast.error('Gagal membuat aspirasi baru!, mohon ikuti panduan')
             }
         })
     }

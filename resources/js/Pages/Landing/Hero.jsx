@@ -60,7 +60,7 @@ export default function Hero() {
                                 whileTap={{ scale: 0.8 }}
                                 transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                             >
-                                <Link as={'button'} href={'/login'} className='bg-[#00e1ff] text-[#525252] w-52 font-plus-jakarta font-semibold px-2 py-2 rounded-lg shadow-md hover:text-[#738598] hover:bg-white duration-300'>
+                                <Link as={'button'} href={'/login'} className='bg-[#00e1ff] text-slate-900 w-52 font-plus-jakarta font-semibold px-2 py-2 rounded-lg shadow-md hover:text-[#738598] hover:bg-white duration-300'>
                                     Buat Laporan
                                 </Link>
                             </motion.div>

@@ -33,12 +33,12 @@ class StudentController extends Controller
 
     public function aspirationPage(Request $request)
     {
+        $query = Aspiration::with('category')->where('user_id', Auth::id());
         $search = $request->input('search');
         $sort = $request->input('sort');
         $filters = $request->only(['search', 'sort', 'status', 'category']);
 
-        $query = Aspiration::with('category')
-            ->when($search, function ($query, $search) {
+        $query->when($search, function ($query, $search) {
                 $query->where('subject', 'like', "%{$search}%")
                     ->orWhere('location', 'like', "%{$search}%");
             })
