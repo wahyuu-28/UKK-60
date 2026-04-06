@@ -84,7 +84,7 @@ export default function Categories({ categories }) {
             <h1 className='font-plus-jakarta'>Here's a list of the Categories</h1>
 
             <div className='flex justify-end'>
-                <button type='button' onClick={() => setIsOpen(true)} className='bg-blue-500 hover:bg-indigo-500/70 text-slate-200 duration-200 font-inter font-semibold rounded-lg px-2 py-2'>Add Category</button>
+                <button type='button' onClick={() => setIsOpen(true)} className='bg-blue-500 hover:bg-slate-900 text-slate-200 duration-200 font-inter font-semibold rounded-lg px-2 py-2'>Add Category</button>
             </div>
 
             <div className='bg-white rounded-lg overflow-hidden shadow mt-2'>

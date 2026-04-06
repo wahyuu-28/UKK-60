@@ -103,18 +103,6 @@ export default function Responses({ aspiration }) {
                                 <span className='px-2'>:</span>
                                 <span className='break-words text-gray-600 leading-relaxed'>{aspiration.category.category_name}</span>
                             </div>
-                            <div className='flex my-2'>
-                                <span className='w-32 font-bold text-gray-700 flex-shrink-0'>Tingkat Darurat</span>
-                                <span className='px-2'>:</span>
-                                <span className={`capitalize rounded-full font-semibold px-2
-                                        ${aspiration.urgency === 'low' ? 'bg-sky-200 text-sky-600' :
-                                        aspiration.urgency === 'medium' ? 'bg-green-200 text-green-600' :
-                                            aspiration.urgency === 'high' ? 'bg-amber-200 text-amber-600' :
-                                                aspiration.urgency === 'emergensy' ? 'bg-red-200 text-red-600' :
-                                                    ''
-                                    }
-                                        `}>{aspiration.urgency}</span>
-                            </div>
                         </div>
                     </div>
                 </div>

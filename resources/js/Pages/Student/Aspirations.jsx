@@ -60,7 +60,6 @@ export default function Aspirations({ aspirations, categories, filters }) {
         subject: '',
         photo: null,
         location: '',
-        urgency: '',
         caption: '',
         category_id: '',
     })
@@ -220,7 +219,6 @@ export default function Aspirations({ aspirations, categories, filters }) {
                         initial="invisible"
                         animate="visible"
                         exit="invisible"
-                        onClick={cancel}
                         className='fixed bg-black/50 inset-0 backdrop-blur-sm flex justify-center items-center'>
                         <motion.div
                             variants={modalVariants}
@@ -243,6 +241,8 @@ export default function Aspirations({ aspirations, categories, filters }) {
                                         <label className='font-plus-jakarta font-semibold'>Status</label>
                                         <input type="text" name="status" value='Submitted' disabled className='border-2 border-gray-300 rounded-lg p-1 text-gray-400 cursor-not-allowed' />
                                     </div>
+
+                                </div>
                                     <div className='flex flex-col'>
                                         <label className='font-plus-jakarta font-semibold'>Kategori</label>
                                         <select name="category_id" value={data.category_id} onChange={(e) => setData('category_id', e.target.value)} className='border-2 border-gray-300 rounded-lg p-1 focus:border-[#1CB3C8] outline-none duration-200'>
@@ -255,20 +255,6 @@ export default function Aspirations({ aspirations, categories, filters }) {
                                             <p className='text-sm text-red-600 font-satoshi'>{errors.category_id}</p>
                                         )}
                                     </div>
-                                    <div className='flex flex-col'>
-                                        <label className='font-plus-jakarta font-semibold'>Tingkat Kepentingan</label>
-                                        <select name="urgency" onChange={(e) => setData('urgency', e.target.value)} value={data.urgency} className='border-2 border-gray-300 rounded-lg p-1 focus:border-[#1CB3C8] outline-none duration-200'>
-                                            <option value="">Pilih tingkat kepentingan</option>
-                                            <option value="low">Kecil</option>
-                                            <option value="medium">Sedang</option>
-                                            <option value="high">Tinggi</option>
-                                            <option value="emergensy">Darurat</option>
-                                        </select>
-                                        {errors.urgency && (
-                                            <p className='text-sm text-red-600 font-satoshi'>{errors.urgency}</p>
-                                        )}
-                                    </div>
-                                </div>
 
                                 <div className='flex flex-col'>
                                     <label className='font-plus-jakarta font-semibold'>Lokasi</label>

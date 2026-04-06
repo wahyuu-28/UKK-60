@@ -48,7 +48,7 @@ export default function Responses({ Notifications = [] }) {
             <div className='max-w-5xl mt-12'>
                 {Object.keys(groupingNotif).length > 0 ? (
                     Object.entries(groupingNotif).map(([label, items]) => (
-                        <div key={label} className='mb-10'>
+                        <div key={label} className='mb-10 tracking-wide'>
                             <div className='flex justify-between items-center mb-4 border-b border-gray-100 pb-2'>
                                 <span className='text-xs font-bold text-gray-400 font-plus-jakarta'>
                                     {label}

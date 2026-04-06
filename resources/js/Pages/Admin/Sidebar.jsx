@@ -5,7 +5,6 @@ import { FaHistory, FaUserPlus } from "react-icons/fa";
 import { LuLogOut } from "react-icons/lu";
 import { MdDashboard } from "react-icons/md";
 import { TbCategoryFilled } from "react-icons/tb";
-import Profile from '/storage/app/public/photo/bobby-fischer-gettyimages-495892222.avif'
 import { CgProfile } from "react-icons/cg";
 
 export default function Sidebar({  }) {

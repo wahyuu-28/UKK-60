@@ -73,7 +73,6 @@ class StudentController extends Controller
             'subject' => 'required',
             'photo' => 'required|image|mimes:jpg,jpeg,png|max:2048',
             'location' => 'required',
-            'urgency' => 'required',
             'caption' => 'required',
             'category_id' => 'required|exists:categories,id'
         ], [
@@ -82,7 +81,6 @@ class StudentController extends Controller
             'photo.mimes' => 'Hanya untuk file png,jpg, dan jpeg',
             'photo.max' => 'Ukuran file maximal 2MB',
             'location.required' => 'Mohon masukan lokasi',
-            'urgency.required' => 'Apa tingkat kepentingan masalah tersebut',
             'caption.required' => 'Mohon jelaskan mengenai aspirasi anda',
             'category_id.required' => 'Pilih kategori sesuai laporan anda'
         ]);
@@ -97,7 +95,6 @@ class StudentController extends Controller
             'subject' => $validated['subject'],
             'photo' => $validated['photo'],
             'location' => $validated['location'],
-            'urgency' => $validated['urgency'],
             'status' => 'Submitted',
             'caption' => $validated['caption'],
             'category_id' => $validated['category_id']

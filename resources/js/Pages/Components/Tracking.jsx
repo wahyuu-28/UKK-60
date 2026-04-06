@@ -37,10 +37,12 @@ export default function Tracking({ currentStatus }) {
 
                     <div className="pb-16">
                         <p className={`text-sm font-bold leading-none transition-colors duration-500
-                            ${index <= activeDex ? 'text-indigo-600' : 'text-gray-500'}`}>
+                            ${index <= activeDex ? 'text-indigo-600 visible' : 'hidden'}`}>
                             {step.label}
                         </p>
-                        <p className="text-xs text-gray-400 mt-1.5">{step.desc}</p>
+                        <p className={`text-xs text-gray-400 mt-1.5
+                            ${index <= activeDex ? 'visible' : 'hidden'}`}>
+                                {step.desc}</p>
                     </div>
                 </div>
             ))}

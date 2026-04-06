@@ -75,7 +75,7 @@ export default function Home({ status, recentAspi }) {
                             <Link href={`/student/aspirations/${item.id}`}>
                                 <div key={item.id} className="relative">
 
-                                    <img src={`/storage/${item.photo}`} className='rounded-t-lg aspect-video h-64 w-full' />
+                                    <img src={`/storage/${item.photo}`} className='rounded-t-lg aspect-video object-cover h-64 w-full' />
                                     <span className={`rounded-full font-inter font-semibold px-2 h-fit shadow-lg absolute top-4 right-4
                                 ${item.status === 'Submitted' ? 'bg-gray-200 text-gray-600' :
                                             item.status === 'Proccess' ? 'bg-amber-200 text-amber-600' :
@@ -89,7 +89,7 @@ export default function Home({ status, recentAspi }) {
                                     <div className='bg-white rounded-b-lg shadow-lg border py-2 px-3'>
                                         <span className='flex flex-row items-center py-2 px-2 gap-3'>
                                             <MdOutlineLocationOn className='text-[16px] text-gray-500' />
-                                            <p className='font-inter font-medium text-sm text-gray-500'>{item.location}</p>
+                                            <p className='font-inter font-medium text-sm truncate w-40 text-gray-500'>{item.location}</p>
                                             <GoDotFill className='text-[8px] text-gray-500' />
                                             <p className='font-inter font-medium text-sm text-gray-500'>{item.time}</p>
                                         </span>

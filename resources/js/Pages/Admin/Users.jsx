@@ -86,7 +86,7 @@ export default function Users({ users }) {
                 </div>
 
                 {/* Add */}
-                <button className='bg-[#3C415E] px-2 flex font-plus-jakarta font-semibold rounded-lg hover:bg-[#1CB3C8] hover:text-[#3C415E] text-white transition-all h-fit py-2'
+                <button className='bg-slate-900 px-2 flex font-plus-jakarta font-semibold rounded-md hover:bg-blue-500 hover:text-slate-900 text-white transition-all h-fit py-2'
                     onClick={() => setIsOpen(true)}><MdAdd className='flex justify-center mt-1 mr-1 text-xl' />Add User</button>
             </div>
 

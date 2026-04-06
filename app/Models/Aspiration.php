@@ -24,6 +24,10 @@ class Aspiration extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function responses(){
+        return $this->hasMany(Response::class);
+    }
+
     public function user() {
         return $this->belongsTo(User::class);
     }
