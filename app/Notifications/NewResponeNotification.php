@@ -31,6 +31,7 @@ class NewResponeNotification extends Notification
 
     /**
      * Get the mail representation of the notification.
+     * halo wahyu
      */
     public function toMail(object $notifiable): MailMessage
     {
