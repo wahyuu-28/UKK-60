@@ -30,7 +30,7 @@ export default function Detail({ aspiration, categories }) {
         const file = e.target.files[0]
         setData('photo', file)
 
-    if (file) {
+        if (file) {
             setPreview(URL.createObjectURL(file))
         }
     }
@@ -103,18 +103,6 @@ export default function Detail({ aspiration, categories }) {
                                 <span className='px-2'>:</span>
                                 <span className='break-words text-gray-600 leading-relaxed'>{aspiration.category.category_name}</span>
                             </div>
-                            <div className='flex my-2'>
-                                <span className='w-32 font-bold text-gray-700 flex-shrink-0'>Tingkat Darurat</span>
-                                <span className='px-2'>:</span>
-                                <span className={`capitalize rounded-full font-semibold px-2
-                                        ${aspiration.urgency === 'low' ? 'bg-sky-200 text-sky-600' :
-                                        aspiration.urgency === 'medium' ? 'bg-green-200 text-green-600' :
-                                            aspiration.urgency === 'high' ? 'bg-amber-200 text-amber-600' :
-                                                aspiration.urgency === 'emergensy' ? 'bg-red-200 text-red-600' :
-                                                    ''
-                                    }
-                                        `}>{aspiration.urgency}</span>
-                            </div>
                             <div className='flex my-4'>
                                 <span className='w-32 font-bold text-gray-700 flex-shrink-0'>Dibuat Pada</span>
                                 <span className='px-2'>:</span>
@@ -132,13 +120,27 @@ export default function Detail({ aspiration, categories }) {
                 </div>
 
                 {/* tracking progress */}
-                <div className='bg-white rounded-lg col-span-4 shadow-lg px-4 py-6'>
-                    <h3 className='font-bold text-4xl font-inter text-center'>Status Aspirasi</h3>
+                <div className='bg-white rounded-lg col-span-4 row-span-2 shadow-lg px-4 py-6'>
                     <div className='flex justify-center items-center'>
                         <Tracking currentStatus={aspiration.status} />
                     </div>
                     <div>
-
+                    <h3 className='font-plus-jakarta font-bold text-xl mb-4'>Feedback Photos</h3>
+                    {aspiration.responses && aspiration.responses.length > 0 ? (
+                        <div className='grid grid-cols-2 gap-2'>
+                            {aspiration.responses.map((res, index) => (
+                                res.photo && (
+                                    <img
+                                    key={index}
+                                    src={`/storage/${res.photo}`}
+                                    className='w-full h-24 object-cover rounded-md'
+                                    />
+                                )
+                            ))}
+                        </div>
+                    ) : (
+                        <p className='text-xs text-gray-400 italic text-center py-4'>Belum ada gambar feedback.</p>
+                    )}
                     </div>
                 </div>
 
@@ -179,31 +181,18 @@ export default function Detail({ aspiration, categories }) {
                                         <option value="Completed">Completed</option>
                                     </select>
                                 </div>
-                                <div className='flex flex-col'>
-                                    <label className='font-plus-jakarta font-semibold'>Kategori</label>
-                                    <select name="category_id" value={data.category_id} onChange={(e) => setData('category_id', e.target.value)} className='border-2 border-gray-300 rounded-lg p-1 focus:border-[#1CB3C8] outline-none duration-200'>
-                                        <option value='' disabled>Pilih Kategori</option>
-                                        {categories.map((cat) => (
-                                            <option key={cat.id} value={cat.id} >{cat.category_name}</option>
-                                        ))}
-                                    </select>
-                                    {errors.category_id && (
-                                        <p className='text-sm text-red-600 font-satoshi'>{errors.category_id}</p>
-                                    )}
-                                </div>
-                                <div className='flex flex-col'>
-                                    <label className='font-plus-jakarta font-semibold'>Tingkat Kepentingan</label>
-                                    <select name="urgency" onChange={(e) => setData('urgency', e.target.value)} value={data.urgency} className='border-2 border-gray-300 rounded-lg p-1 focus:border-[#1CB3C8] outline-none duration-200'>
-                                        <option value="">Pilih tingkat kepentingan</option>
-                                        <option value="low">Kecil</option>
-                                        <option value="medium">Sedang</option>
-                                        <option value="high">Tinggi</option>
-                                        <option value="emergensy">Darurat</option>
-                                    </select>
-                                    {errors.urgency && (
-                                        <p className='text-sm text-red-600 font-satoshi'>{errors.urgency}</p>
-                                    )}
-                                </div>
+                            </div>
+                            <div className='flex flex-col'>
+                                <label className='font-plus-jakarta font-semibold'>Kategori</label>
+                                <select name="category_id" value={data.category_id} onChange={(e) => setData('category_id', e.target.value)} className='border-2 border-gray-300 rounded-lg p-1 focus:border-[#1CB3C8] outline-none duration-200'>
+                                    <option value='' disabled>Pilih Kategori</option>
+                                    {categories.map((cat) => (
+                                        <option key={cat.id} value={cat.id} >{cat.category_name}</option>
+                                    ))}
+                                </select>
+                                {errors.category_id && (
+                                    <p className='text-sm text-red-600 font-satoshi'>{errors.category_id}</p>
+                                )}
                             </div>
 
                             <div className='flex flex-col'>

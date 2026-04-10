@@ -74,29 +74,30 @@ export default function Aspirations({ aspirations, categories, filters }) {
 
                 </div>
             </form>
-            <div className='grid grid-cols-3 gap-3 my-8 justify-center'>
+            <div className='grid grid-cols-3 gap-3 my-8 justify-center items-stretch'>
                 {aspirations.data.map((asp) => (
-                    <div key={asp.id}>
-                        <Link href={`/admin/aspirations/${asp.id}`}>
-                            <div className='bg-white border border-slate-200 rounded-xl flex flex-col hover:-translate-y-2 hover:shado w-xl shadow-md px-2 py-2 duration-300'>
+                    <div key={asp.id} className='h-full'>
+                        <Link href={`/admin/aspirations/${asp.id}`} className='h-full block'>
+                            <div className='bg-white border border-slate-200 rounded-xl flex flex-col hover:-translate-y-2 hover:shado w-xl h-full shadow-md px-2 py-2 duration-300'>
 
-                                <div className='flex justify-end'>
-
-                                    <span className={`text-sm font-inter rounded-full w-24 text-center font-semibold h-fit px-2
-                                ${asp.status === 'Submitted' ? 'bg-gray-500/15 text-gray-600' :
-                                            asp.status === 'Rejected' ? 'bg-red-500/15 text-red-600' :
-                                                asp.status === 'Proccess' ? 'bg-amber-500/15 text-amber-600' :
-                                                    asp.status === 'Completed' ? 'bg-blue-500/15 text-blue-600' :
-                                                        ''
+                                <div className='flex justify-end mb-2'>
+                                    <span className={`text-xs font-inter rounded-full px-3 py-1 font-semibold
+                                    ${asp.status === 'Submitted' ? 'bg-gray-500/15 text-gray-600' :
+                                        asp.status === 'Rejected' ? 'bg-red-500/15 text-red-600' :
+                                        asp.status === 'Proccess' ? 'bg-amber-500/15 text-amber-600' :
+                                        asp.status === 'Completed' ? 'bg-blue-500/15 text-blue-600' : ''
                                         }`}>
                                         {asp.status}
                                     </span>
                                 </div>
 
+                                <div className='flex-grow'>
+
                                 <h1 className='font-inter font-semibold capitalize line-clamp-1 text-2xl'>
                                     {asp.subject}
                                 </h1>
                                 <p className='font-inter font-medium text-gray-500 line-clamp-2'>{asp.caption}</p>
+                                </div>
                                 <p className='font-inter text-[10px] text-end italic text-gray-400'>{formatDistanceStrict(new Date(asp.created_at), new Date(), {
                                     addSuffix: true,
                                     locale: id

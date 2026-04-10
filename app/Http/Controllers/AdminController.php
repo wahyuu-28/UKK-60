@@ -26,7 +26,8 @@ class AdminController extends Controller
                 'proccess' => Aspiration::where('status', 'Proccess')->count(),
                 'completed' => Aspiration::where('status', 'Completed')->count(),
                 'rejected' => Aspiration::where('status', 'Rejected')->count(),
-            ]
+            ],
+            'recent' => Aspiration::latest()->limit(6)->get()
         ]);
     }
 
@@ -61,7 +62,7 @@ class AdminController extends Controller
             'role' => 'student'
         ]);
 
-        $siswa = Student::create([
+        Student::create([
             'user_id' => $user->id,
             'NIS' => $validated['NIS'],
             'grade' => $validated['grade']
@@ -109,7 +110,7 @@ class AdminController extends Controller
 
     public function showAspiration(Aspiration $aspiration)
     {
-        $aspiration->load(['user', 'category']);
+        $aspiration->load(['user', 'category', 'responses']);
         return inertia('Admin/Detail', [
             'aspiration' => $aspiration,
             'categories' => Category::all()
@@ -239,9 +240,8 @@ class AdminController extends Controller
             'is_read' => false
         ]);
 
-
         event(new SendResponse($response));
 
-        return back()->with(['message' => 'Berhasil respon']);
+        return redirect("/admin/aspirations/{$aspiration->id}");
     }
 }

@@ -17,7 +17,6 @@ return new class extends Migration
             $table->foreignId('from_user_id')->constrained('users');
             $table->foreignId('respons_id')->constrained('responses');
             $table->foreignId('aspiration_id')->constrained('aspirations')->onDelete('cascade');
-            $table->boolean('is_read')->default(false);
             $table->timestamps();
         });
     }

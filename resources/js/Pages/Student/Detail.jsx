@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Sides from '../Layout/Sides'
 import Tracking from '../Components/Tracking'
 import { format } from 'date-fns'
@@ -8,12 +8,23 @@ import { Head, Link } from '@inertiajs/react'
 
 export default function Detail({ aspiration, categories }) {
 
+    const [openImage, setIsOpenImage] = useState(null)
+    const [image, setImage] = useState(null)
+
+    function handleImageView(photo) {
+        setIsOpenImage(photo)
+    }
+
+    function handleImage(photo) {
+        setImage(photo)
+    }
+
     const dateCreated = format(new Date(aspiration.created_at), 'dd MMMM yyyy', { locale: id })
     return (
         <Sides>
-            <Head title={ aspiration.subject }/>
+            <Head title={aspiration.subject} />
             <div className='grid grid-cols-12 gap-x-2 gap-y-4 p-3'>
-                <div className='bg-white rounded-lg shadow-lg col-span-8 px-4 py-4 h-fitt'>
+                <div className='bg-white rounded-lg shadow-lg col-span-8 px-4 py-4 h-fit'>
                     <div className='mb-2'>
                         <div className='flex justify-end'>
                             <Link href={'/student/aspirations'}>
@@ -58,27 +69,48 @@ export default function Detail({ aspiration, categories }) {
                     <div className='flex justify-center items-center'>
                         <Tracking currentStatus={aspiration.status} />
                     </div>
-                    {aspiration.responses && aspiration.responses.length > 0 ? (
-                        <div className='grid grid-cols-2 gap-2'>
-                            {aspiration.responses.map((res, index) => (
-                                res.photo && (
-                                    <img
-                                        key={index}
-                                        src={`/storage/${res.photo}`}
-                                        className='w-full h-24 object-cover rounded-md'
-                                    />
-                                )
-                            ))}
-                        </div>
-                    ) : (
+                    <div>
+                        <h3 className='font-plus-jakarta font-bold text-xl mb-4'>Feedback Photos</h3>
+                        {aspiration.responses && aspiration.responses.length > 0 ? (
+                            <div className='grid grid-cols-2 gap-2 cursor-pointer'>
+                                {aspiration.responses.map((res, index) => (
+                                    res.photo && (
+                                        <img
+                                            key={index}
+                                            src={`/storage/${res.photo}`}
+                                            className='w-full h-24 object-cover rounded-md shadow-md'
+                                            onClick={() => handleImageView(res.photo)}
+                                        />
+
+                                    )
+                                ))}
+                            </div>
+                        ) : (
                             <p className='text-xs text-gray-400 italic text-center py-4'>Belum ada gambar feedback.</p>
-                    )}
+                        )}
+                    </div>
                 </div>
+
+                {openImage && (
+                    <div className='bg-black/50 backdrop-blur-sm fixed inset-0 flex justify-center items-center' onClick={() => setIsOpenImage(null)}>
+                        <div className='bg-white rounded-md px-4 py-4 shadow-md'>
+                            <img src={`/storage/${openImage}`} className='shadow-lg' />
+                        </div>
+                    </div>
+                )}
 
                 {/* gambar */}
                 <div className='bg-white rounded-lg shadow-lg col-span-8 px-4 py-6'>
-                    <img src={`/storage/${aspiration.photo}`} className='rounded-lg object-contain w-full h-96' />
+                    <img src={`/storage/${aspiration.photo}`} className='rounded-lg object-contain w-full h-96' onClick={() => handleImage(aspiration.photo)} />
                 </div>
+
+                {image && (
+                    <div className='bg-black/50 backdrop-blur-sm fixed inset-0 flex justify-center items-center' onClick={() => setImage(null)}>
+                        <div className='bg-white rounded-md px-4 py-4 shadow-md w-[70%]'>
+                            <img src={`/storage/${image}`} className='shadow-lg' />
+                        </div>
+                    </div>
+                )}
             </div>
         </Sides>
     )

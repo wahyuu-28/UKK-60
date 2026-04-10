@@ -105,7 +105,7 @@ class StudentController extends Controller
 
     public function showAspiration(Aspiration $aspiration)
     {
-        $aspiration->load(['user', 'category']);
+        $aspiration->load(['user', 'category', 'responses']);
 
         return inertia('Student/Detail', [
             'aspiration' => $aspiration,

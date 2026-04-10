@@ -18,7 +18,6 @@ return new class extends Migration
             $table->enum('status', ['Submitted', 'Rejected', 'Proccess', 'Completed'])->default('Submitted');
             $table->string('photo')->nullable();
             $table->text('location');
-            // $table->enum('urgency', ['low', 'medium', 'high', 'emergensy'])->default('low');
             $table->text('caption');
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->timestamps();
