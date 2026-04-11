@@ -18,7 +18,7 @@ class RedirectByRole
     {
 
         if(!Auth::check()) {
-            return redirect('/login');
+            return redirect('/login/student');
         }
 
         $userRole = Auth::user()->role;
@@ -27,7 +27,7 @@ class RedirectByRole
             return match ($userRole){
                 'admin' => redirect()->route('homeAdmin'),
                 'student' => redirect()->route('homeStudent'),
-                default => redirect('/login')
+                default => redirect('/login/student')
                 };
         }
         return $next($request);

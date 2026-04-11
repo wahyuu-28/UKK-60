@@ -25,7 +25,7 @@ const Navbar = () => {
                     <a href="#hero" className="text-gray-600 font-plus-jakarta hover:text-indigo-600 font-medium transition">Home</a>
                     <a href="#services" className="text-gray-600 font-plus-jakarta hover:text-indigo-600 font-medium transition">Services</a>
                     <a href="#recent" className="text-gray-600 font-plus-jakarta hover:text-indigo-600 font-medium transition">About</a>
-                    <Link href={'/login'} as={'button'} className="bg-[#2d2654] text-white px-6 py-2.5 rounded-lg font-bold hover:opacity-90 transition shadow-lg shadow-indigo-100">
+                    <Link href={'/login/student'} as={'button'} className="bg-[#2d2654] text-white px-6 py-2.5 rounded-lg font-bold hover:opacity-90 transition shadow-lg shadow-indigo-100">
                         Get Started
                     </Link>
                 </div>

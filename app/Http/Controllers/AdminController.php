@@ -237,7 +237,6 @@ class AdminController extends Controller
             'from_user_id' => Auth::id(),
             'respons_id' => $response->id,
             'aspiration_id' => $aspiration->id,
-            'is_read' => false
         ]);
 
         event(new SendResponse($response));

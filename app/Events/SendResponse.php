@@ -38,8 +38,6 @@ class SendResponse implements ShouldBroadcast
 
     public function broadcastWith(): array
     {
-
-
         return [
             'id' => $this->response->aspiration_id,
             'message' => 'Heyy, ada update pada laporanmu!',

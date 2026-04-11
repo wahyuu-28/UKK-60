@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Admin;
 use App\Models\Category;
 use App\Models\Student;
 use App\Models\User;
@@ -21,7 +22,7 @@ class DatabaseSeeder extends Seeder
             'id' => 1,
             'name' => 'wahyu',
             'email' => 'wahyu@gmail.com',
-            'password' => Hash::make('wahyu123'),
+            'password' => Hash::make('wahyu1233'),
             'role' => 'admin'
         ]);
 
@@ -29,14 +30,19 @@ class DatabaseSeeder extends Seeder
             'id' => 2,
             'name' => 'wahyu2',
             'email' => 'wahyu2@gmail.com',
-            'password' => Hash::make('wahyu123'),
+            'password' => Hash::make('wahyu1234'),
             'role' => 'student'
         ]);
 
         Student::create([
             'user_id' => 2,
-            'NIS' => 2123917298,
+            'nis' => 1234567890,
             'grade' => 'XI RPL 2'
+        ]);
+
+        Admin::create([
+            'user_id' => 1,
+            'nip' => 1234567890
         ]);
 
         User::factory(30)->create();

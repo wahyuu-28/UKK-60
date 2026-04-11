@@ -18,10 +18,14 @@ Route::get('/', function () {
 });
 
 Route::middleware('guest')->group(function () {
-    Route::get('/login', function () {
-        return inertia('Auth/Login');
+    Route::get('/login/student', function () {
+        return inertia('Auth/LoginStudent');
+    })->name('login');
+    Route::get('/login/admin', function () {
+        return inertia('Auth/LoginAdmin');
     });
-    Route::post('login', [AuthController::class, 'login'])->name('login');
+    Route::post('/login/student', [AuthController::class, 'loginStudent'])->name('loginStudent');
+    Route::post('/login/admin', [AuthController::class, 'loginAdmin'])->name('loginAdmin');
 });
 
 // Route Admin
@@ -54,7 +58,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 
     Route::post('/users', [AdminController::class, 'addStudent'])->name('addStudent');
 
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logoutAdmin');
 });
 
 // Route Siswa
@@ -68,5 +72,5 @@ Route::middleware(['auth', 'role:student'])->prefix('student')->group(function (
     Route::get('/aspirations', [StudentController::class, 'aspirationPage']);
     Route::post('/aspirations', [StudentController::class, 'addAspirations']);
 
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logoutStudent');
 });

@@ -75,7 +75,7 @@ export default function Recent() {
             transition={{ type: 'spring', delay: 0.6, stiffness: 200 }}
             viewport={{ once: true }}
             >
-                <Link href={'/login'} className='flex items-center justify-end text-[#3C415E] font-semibold text-xl font-inter px-2 me-4 mb-3'>Lihat Semua <FaArrowRightLong className='ms-2' /></Link>
+                <Link href={'/login/student'} className='flex items-center justify-end text-[#3C415E] font-semibold text-xl font-inter px-2 me-4 mb-3'>Lihat Semua <FaArrowRightLong className='ms-2' /></Link>
             </motion.div>
 
 
@@ -114,7 +114,7 @@ export default function Recent() {
                             <h3 className='font-inter font-bold text-2xl capitalize'>{asp.subject}</h3>
                             <p className='line-clamp-2 font-inter font-light text-gray-600'>{asp.caption}</p>
                             <div className='flex justify-end px-4 py-2'>
-                                <Link href={'/login'} className='font-inter font-semibold text-[#3C415E]'>Detail</Link>
+                                <Link href={'/login/student'} className='font-inter font-semibold text-[#3C415E]'>Detail</Link>
                             </div>
                         </div>
 
