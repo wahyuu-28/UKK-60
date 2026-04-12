@@ -45,8 +45,8 @@ export default function Home({ status, recent }) {
                     </div>
                     {/* text */}
                     <div>
-                        <p className='font-plus-jakarta font-medium text-gray-500 text-sm'>Proccess</p>
-                        <h3 className='font-inter text-2xl font-bold text-gray-900 mt-1 break-all'>{status.proccess}</h3>
+                        <p className='font-plus-jakarta font-medium text-gray-500 text-sm'>Process</p>
+                        <h3 className='font-inter text-2xl font-bold text-gray-900 mt-1 break-all'>{status.process}</h3>
                     </div>
                 </div>
 
@@ -80,7 +80,7 @@ export default function Home({ status, recent }) {
                                         <img src={`/storage/${item.photo}`} className='rounded-t-lg aspect-video object-cover h-64 w-full' />
                                         <span className={`rounded-full font-inter font-semibold px-2 h-fit shadow-lg absolute top-4 right-4
                                             ${item.status === 'Submitted' ? 'bg-gray-200 text-gray-600' :
-                                                item.status === 'Proccess' ? 'bg-amber-200 text-amber-600' :
+                                                item.status === 'Process' ? 'bg-amber-200 text-amber-600' :
                                                     item.status === 'Rejected' ? 'bg-red-200 text-red-600' :
                                                         item.status === 'Completed' ? 'bg-blue-200 text-blue-600' :
                                                             ''

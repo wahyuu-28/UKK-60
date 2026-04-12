@@ -176,7 +176,7 @@ export default function Detail({ aspiration, categories }) {
                                     <label className='font-plus-jakarta font-semibold'>Status</label>
                                     <select name="status" onChange={(e) => setData('status', e.target.value)} value={data.status} className='border-2 border-gray-300 rounded-lg p-1 focus:border-[#1CB3C8] outline-none duration-200'>
                                         <option value="Submitted">Submitted</option>
-                                        <option value="Proccess">Proccess</option>
+                                        <option value="Process">Process</option>
                                         <option value="Rejected">Rejected</option>
                                         <option value="Completed">Completed</option>
                                     </select>

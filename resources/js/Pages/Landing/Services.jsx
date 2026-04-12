@@ -59,7 +59,7 @@ export default function Services() {
                         className='text-[#3C415E] text-4xl font-plus-jakarta font-extrabold capitalize mb-6'>
                         Mengapa menggunakan layanan kami?
                     </motion.h3>
-                    <motion.p h2
+                    <motion.p
                         variants={itemText}
 
                         className='text-lg font-plus-jakarta text-gray-500'>

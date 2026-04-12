@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import Side from '../Layout/Side'
 import { IoIosArrowForward } from 'react-icons/io'
 import { Head, Link, useForm } from '@inertiajs/react'
-import Kyoto from '../../../../public/photo/Kyoto.jpg'
 import { GoDotFill } from 'react-icons/go'
 import { format } from 'date-fns'
 import { id } from 'date-fns/locale'
@@ -67,7 +66,7 @@ export default function Responses({ aspiration }) {
                             <span className={`text-sm font-inter rounded-full w-24 text-center font-semibold h-fit px-2
                                 ${aspiration.status === 'Submitted' ? 'bg-gray-500/15 text-gray-600' :
                                     aspiration.status === 'Rejected' ? 'bg-red-500/15 text-red-600' :
-                                        aspiration.status === 'Proccess' ? 'bg-amber-500/15 text-amber-600' :
+                                        aspiration.status === 'Process' ? 'bg-amber-500/15 text-amber-600' :
                                             aspiration.status === 'Completed' ? 'bg-blue-500/15 text-blue-600' :
                                                 ''
                                 }`}>
@@ -123,7 +122,7 @@ export default function Responses({ aspiration }) {
                                         <label className='font-plus-jakarta font-semibold'>Perubahan Status</label>
                                         <select name="status" onChange={(e) => setData('status', e.target.value)} value={data.status} className='border-2 border-gray-300 rounded-lg p-1 focus:border-[#1CB3C8] outline-none duration-200'>
                                             <option value="Submitted">Submitted</option>
-                                            <option value="Proccess">Proccess</option>
+                                            <option value="Process">Process</option>
                                             <option value="Completed">Completed</option>
                                             <option value="Rejected">Rejected</option>
                                         </select>

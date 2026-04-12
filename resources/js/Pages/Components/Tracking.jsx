@@ -4,7 +4,7 @@ export default function Tracking({ currentStatus }) {
 
     const statusToIndex = {
         'Submitted': 0,
-        'Proccess': 1,
+        'Process': 1,
         'Completed': 2,
         'Rejected': -1
     };
@@ -13,7 +13,7 @@ export default function Tracking({ currentStatus }) {
 
     const steps = [
         { id: 'Submitted', label: 'Terkirim', desc: activeDex > 0 ? 'Sudah dikonfirmasi' : 'Menunggu Konfirmasi...' },
-        { id: 'Proccess', label: 'Diproses', desc: activeDex > 1 ? 'Selesai ditangani...' : 'Sedang dalam proses penanganan...' },
+        { id: 'Process', label: 'Diproses', desc: activeDex > 1 ? 'Selesai ditangani...' : 'Sedang dalam proses penanganan...' },
         { id: 'Completed', label: 'Selesai', desc: 'Laporan selesai diatasi' },
     ]
 

@@ -5,7 +5,7 @@ import { IoIosArrowForward } from 'react-icons/io'
 import { AiOutlineRight } from 'react-icons/ai'
 
 export default function Categories({ categories }) {
-    const { data, setData, post, put, delete: destroy, errors, proccess, reset } = useForm({
+    const { data, setData, post, put, delete: destroy, errors, process, reset } = useForm({
         id: null,
         category_name: ''
     })

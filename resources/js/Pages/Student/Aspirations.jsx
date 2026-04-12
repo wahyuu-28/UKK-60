@@ -186,7 +186,7 @@ export default function Aspirations({ aspirations, categories, filters }) {
                                     <div className='flex justify-between items-start gap-2 mb-2'>
                                         <h2 className='font-inter text-lg font-bold leading-tight line-clamp-1'>{asp.subject}</h2>
                                         <span className={`rounded-full font-inter text-sm font-bold px-2.5 py-1 uppercase tracking-wider shadow-sm border ${asp.status === 'Submitted' ? 'bg-gray-200 text-gray-600 border-gray-200' :
-                                            asp.status === 'Proccess' ? 'bg-amber-200 text-amber-600 border-amber-200' :
+                                            asp.status === 'Process' ? 'bg-amber-200 text-amber-600 border-amber-200' :
                                                 asp.status === 'Rejected' ? 'bg-red-200 text-red-600 border-red-200' :
                                                     asp.status === 'Completed' ? 'bg-blue-200 text-blue-600 border-green-200' : ''
                                             }`}>
@@ -324,7 +324,7 @@ export default function Aspirations({ aspirations, categories, filters }) {
 
                             <div className='bg-gray-100 px-4 py-1 text-[10px] font-bold text-gray-500 uppercase'>Filter Status</div>
                             <p onClick={() => updateFilters({ status: 'Submitted' })} className='px-4 py-2 hover:bg-blue-50 cursor-pointer border-b text-sm'>Submitted</p>
-                            <p onClick={() => updateFilters({ status: 'Proccess' })} className='px-4 py-2 hover:bg-blue-50 cursor-pointer border-b text-sm'>Proccess</p>
+                            <p onClick={() => updateFilters({ status: 'Process' })} className='px-4 py-2 hover:bg-blue-50 cursor-pointer border-b text-sm'>Process</p>
                             <p onClick={() => updateFilters({ status: 'Completed' })} className='px-4 py-2 hover:bg-blue-50 cursor-pointer border-b text-sm'>Completed</p>
                             <p onClick={() => updateFilters({ status: 'Rejected' })} className='px-4 py-2 hover:bg-blue-50 cursor-pointer border-b text-sm'>Rejected</p>
 

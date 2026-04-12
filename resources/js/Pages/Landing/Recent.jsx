@@ -9,8 +9,8 @@ import { Link } from '@inertiajs/react'
 import { motion, scale } from 'motion/react'
 
 const recentAspirations = [
-    { id: 1, subject: 'Perbaikan ruang kelas', status: 'Proccess', image: Classroom, caption: 'Perbaikan kerusakan kelas XI Mesin yang tidak memungkinkan untuk dilaksanakannya proses ajar mengajar', location: 'Ruang 24', time: '16 menit lalu' },
-    { id: 2, subject: 'Perbaikan PC Lab', status: 'Proccess', image: PC, caption: 'Perbaikan PC RPL yang kondisinya tidak memungkinkan untuk digunakan selama proses pembelajaran', location: 'Lab B', time: '3 jam yang lalu' },
+    { id: 1, subject: 'Perbaikan ruang kelas', status: 'Process', image: Classroom, caption: 'Perbaikan kerusakan kelas XI Mesin yang tidak memungkinkan untuk dilaksanakannya proses ajar mengajar', location: 'Ruang 24', time: '16 menit lalu' },
+    { id: 2, subject: 'Perbaikan PC Lab', status: 'Process', image: PC, caption: 'Perbaikan PC RPL yang kondisinya tidak memungkinkan untuk digunakan selama proses pembelajaran', location: 'Lab B', time: '3 jam yang lalu' },
     { id: 3, subject: 'Perbaikan Papan Tulis', status: 'Verified', image: Whitebroad, caption: 'Penggantian papan tulis yang baru untuk kelas XI Geomatika 2 yang kondisinya tidak memungkinkan untuk dilaksanakannya proses ajar mengajar', location: 'Ruang 12', time: '1 hari lalu' },
 ]
 
@@ -94,7 +94,7 @@ export default function Recent() {
                         <img src={asp.image} className='rounded-t-lg object-cover h-64 w-full' />
                         <span className={`rounded-full font-inter font-semibold px-2 h-fit shadow-lg absolute top-4 right-4
                             ${asp.status === 'Submitted' ? 'bg-gray-200 text-gray-600' :
-                                asp.status === 'Proccess' ? 'bg-amber-200 text-amber-600' :
+                                asp.status === 'Process' ? 'bg-amber-200 text-amber-600' :
                                     asp.status === 'Rejected' ? 'bg-red-200 text-red-600' :
                                         asp.status === 'Complete' ? 'bg-blue-200 text-blue-600' :
                                             ''

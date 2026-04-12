@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import Side from '../Layout/Side'
 import { IoIosArrowForward } from 'react-icons/io'
 import { Head, Link, router, usePage } from '@inertiajs/react'
-import Kyoto from '../../../../public/photo/Kyoto.jpg'
 import { formatDistanceStrict } from 'date-fns'
 import { id } from 'date-fns/locale'
 import { AiOutlineRight } from 'react-icons/ai'
@@ -84,7 +83,7 @@ export default function Aspirations({ aspirations, categories, filters }) {
                                     <span className={`text-xs font-inter rounded-full px-3 py-1 font-semibold
                                     ${asp.status === 'Submitted' ? 'bg-gray-500/15 text-gray-600' :
                                         asp.status === 'Rejected' ? 'bg-red-500/15 text-red-600' :
-                                        asp.status === 'Proccess' ? 'bg-amber-500/15 text-amber-600' :
+                                        asp.status === 'Process' ? 'bg-amber-500/15 text-amber-600' :
                                         asp.status === 'Completed' ? 'bg-blue-500/15 text-blue-600' : ''
                                         }`}>
                                         {asp.status}
@@ -118,7 +117,7 @@ export default function Aspirations({ aspirations, categories, filters }) {
 
                         <div className='bg-gray-100 px-4 py-1 text-[10px] font-bold text-gray-500 uppercase'>Filter Status</div>
                         <p onClick={() => updateFilters({ status: 'Submitted' })} className='px-4 py-2 hover:bg-blue-50 cursor-pointer border-b text-sm'>Submitted</p>
-                        <p onClick={() => updateFilters({ status: 'Proccess' })} className='px-4 py-2 hover:bg-blue-50 cursor-pointer border-b text-sm'>Proccess</p>
+                        <p onClick={() => updateFilters({ status: 'Process' })} className='px-4 py-2 hover:bg-blue-50 cursor-pointer border-b text-sm'>Process</p>
                         <p onClick={() => updateFilters({ status: 'Completed' })} className='px-4 py-2 hover:bg-blue-50 cursor-pointer border-b text-sm'>Completed</p>
                         <p onClick={() => updateFilters({ status: 'Rejected' })} className='px-4 py-2 hover:bg-blue-50 cursor-pointer border-b text-sm'>Rejected</p>
 
