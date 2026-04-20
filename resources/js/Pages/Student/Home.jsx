@@ -70,35 +70,38 @@ export default function Home({ status, recentAspi }) {
             <div>
                 <h2 className="font-bold font-plus-jakarta my-8">Recent Aspirations</h2>
                 <div className='grid grid-cols-2 px-4 gap-3'>
-                    {recentAspi.length > 0 ? (
-                        recentAspi.map((item) => (
-                            <Link href={`/student/aspirations/${item.id}`}>
-                                <div key={item.id} className="relative">
+                    {recent.length > 0 ? (
+                        recent.map((item) => {
+                            const dateCreated = format(new Date(item.created_at), 'dd MMMM yyyy', { locale: idLocale });
+                            return (
+                                <Link href={`/student/aspirations/${item.id}`}>
+                                    <div key={item.id} className="relative">
 
-                                    <img src={`/storage/${item.photo}`} className='rounded-t-lg aspect-video object-cover h-64 w-full' />
-                                    <span className={`rounded-full font-inter font-semibold px-2 h-fit shadow-lg absolute top-4 right-4
-                                ${item.status === 'Submitted' ? 'bg-gray-200 text-gray-600' :
-                                            item.status === '' ? 'bg-amber-200 text-amber-600' :
-                                                item.status === 'Rejected' ? 'bg-red-200 text-red-600' :
-                                                    item.status === 'Completed' ? 'bg-blue-200 text-blue-600' :
-                                                        ''
-                                        }
-                                    `}
-                                    >{item.status}</span>
+                                        <img src={`/storage/${item.photo}`} className='rounded-t-lg aspect-video object-cover h-64 w-full' />
+                                        <span className={`rounded-full font-inter font-semibold px-2 h-fit shadow-lg absolute top-4 right-4
+                                            ${item.status === 'Submitted' ? 'bg-gray-200 text-gray-600' :
+                                                item.status === 'Process' ? 'bg-amber-200 text-amber-600' :
+                                                    item.status === 'Rejected' ? 'bg-red-200 text-red-600' :
+                                                        item.status === 'Completed' ? 'bg-blue-200 text-blue-600' :
+                                                            ''
+                                            }
+                                                `}
+                                        >{item.status}</span>
 
-                                    <div className='bg-white rounded-b-lg shadow-lg border py-2 px-3'>
-                                        <span className='flex flex-row items-center py-2 px-2 gap-3'>
-                                            <MdOutlineLocationOn className='text-[16px] text-gray-500' />
-                                            <p className='font-inter font-medium text-sm truncate w-40 text-gray-500'>{item.location}</p>
-                                            <GoDotFill className='text-[8px] text-gray-500' />
-                                            <p className='font-inter font-medium text-sm text-gray-500'>{item.time}</p>
-                                        </span>
-                                        <h3 className='font-inter font-bold text-2xl capitalize'>{item.subject}</h3>
-                                        <p className='line-clamp-2 font-inter font-light text-gray-600'>{item.caption}</p>
+                                        <div className='bg-white rounded-b-lg h-48 shadow-lg border py-2 px-3'>
+                                            <span className='flex flex-row items-center py-2 px-2 gap-3'>
+                                                <MdOutlineLocationOn className='text-[16px] text-gray-500' />
+                                                <p className='font-inter font-medium text-sm truncate w-40 text-gray-500'>{item.location}</p>
+                                                <GoDotFill className='text-[8px] text-gray-500' />
+                                                <p className='font-inter font-medium text-sm text-gray-500'>{dateCreated}</p>
+                                            </span>
+                                            <h3 className='font-inter font-bold text-2xl capitalize'>{item.subject}</h3>
+                                            <p className='line-clamp-2 font-inter font-light text-gray-600'>{item.caption}</p>
+                                        </div>
                                     </div>
-                                </div>
-                            </Link>
-                        ))
+                                </Link>
+                            )
+                        })
                     ) : (
                         <p className="text-xs opacity-50">Belum ada aspirasi...</p>
                     )}

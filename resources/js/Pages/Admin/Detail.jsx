@@ -113,7 +113,7 @@ export default function Detail({ aspiration, categories }) {
 
 
                     <div className='flex justify-end items-center gap-x-4 px-4'>
-                        <Link href={`/admin/respons/${aspiration.id}`} className='flex px-2 py-2 items-center gap-x-1 font-bold font-plus-jakarta text-[#ff5b04]'><LuMessageSquareText size={15} className='text-center' /> Balas</Link>
+                        <Link href={`/admin/response/${aspiration.id}`} className='flex px-2 py-2 items-center gap-x-1 font-bold font-plus-jakarta text-[#ff5b04]'><LuMessageSquareText size={15} className='text-center' /> Balas</Link>
                         <button onClick={() => editModalOpen(true)} className='text-[#0096c7] px-2 py-2 flex items-center gap-x-1 font-bold font-plus-jakarta'><FaEdit size={15} className='text-[#0096c7] text-center' />Edit</button>
                         <button onClick={() => delModalOpen(true)} className='text-[#ff4e45] px-2 py-2 flex items-center gap-x-1 font-bold font-plus-jakarta'><FaTrashAlt size={15} className='text-[#ff4e45] text-center' />Hapus</button>
                     </div>

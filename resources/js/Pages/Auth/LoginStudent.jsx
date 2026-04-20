@@ -6,7 +6,7 @@ import { IoMdEye, IoMdEyeOff, IoMdLock } from "react-icons/io";
 
 export default function LoginStudent() {
     const { data, setData, post, processing, errors } = useForm({
-        NIS: "",
+        nis: "",
         password: "",
     });
 
@@ -49,13 +49,13 @@ export default function LoginStudent() {
                             <div className="relative flex flex-col justify-center mb-2">
                                 <input
                                     type="text"
-                                    name="NIS"
+                                    name="nis"
                                     placeholder="   "
-                                    id="NIS"
-                                    className={`peer border-2 outline-none focus:border-[#1CB3C8] bg-inherit w-80 rounded-xl px-3 py-2 ${errors.NIS ? 'border-red-500' : 'border-gray-300'}`}
-                                    value={data.NIS}
+                                    id="nis"
+                                    className={`peer border-2 outline-none focus:border-[#1CB3C8] bg-inherit w-80 rounded-xl px-3 py-2 ${errors.nis ? 'border-red-500' : 'border-gray-300'}`}
+                                    value={data.nis}
                                     onChange={(e) =>
-                                        setData("NIS", e.target.value)
+                                        setData("nis", e.target.value)
                                     }
                                 />
                                 {/* <p className="invisible peer-invalid:visible">Please input valid email</p> */}
@@ -65,8 +65,8 @@ export default function LoginStudent() {
                                 peer-[:not(placeholder-shown)]:-translate-y-8 peer-[:not(placeholde-shown)]:opacity-100 peer-[:not(placeholde-shown)]:font-semibold peer-[:not(placeholde-shown)]:text-sm">
                                     NIS
                                 </label>
-                                {errors.NIS && (
-                                    <p className="text-red-600 font-inter font-medium text-start text-sm px-2">{errors.NIS}</p>
+                                {errors.nis && (
+                                    <p className="text-red-600 font-inter font-medium text-start text-sm px-2">{errors.nis}</p>
                                 )}
                             </div>
 

@@ -19,7 +19,7 @@ export default function Responses({ aspiration }) {
 
     function submit(e){
         e.preventDefault()
-        post(`/admin/aspirations/${aspiration.id}/respons`, {
+        post(`/admin/response/${aspiration.id}`, {
             forceFormData: true,
             onSuccess: () => {
                 handleReset()

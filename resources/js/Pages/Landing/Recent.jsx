@@ -1,7 +1,7 @@
 import React from 'react'
 import Classroom from '/public/photo/indonesian classroom.jpg'
 import Whitebroad from '/public/photo/broken whiteboard.webp'
-import PC from '/public/photo/school pc'
+import PC from '/public/photo/school pc.webp'
 import { GoDotFill } from 'react-icons/go'
 import { FaArrowRightLong } from 'react-icons/fa6'
 import { MdOutlineLocationOn } from 'react-icons/md'

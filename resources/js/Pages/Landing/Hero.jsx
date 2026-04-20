@@ -1,5 +1,5 @@
 import React from 'react'
-import Kelas from '../../../../storage/app/public/photo/view-modern-classroom-schooll.jpg'
+import Kelas from '/public/photo/view-modern-classroom-schooll.jpg'
 import { Link } from '@inertiajs/react'
 import { motion, scale } from 'motion/react'
 
