@@ -126,9 +126,9 @@ export default function Detail({ aspiration, categories }) {
                     </div>
                     <div>
                     <h3 className='font-plus-jakarta font-bold text-xl mb-4'>Feedback Photos</h3>
-                    {aspiration.responses && aspiration.responses.length > 0 ? (
+                    {aspiration.response && aspiration.response.length > 0 ? (
                         <div className='grid grid-cols-2 gap-2'>
-                            {aspiration.responses.map((res, index) => (
+                            {aspiration.response.map((res, index) => (
                                 res.photo && (
                                     <img
                                     key={index}

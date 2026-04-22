@@ -10,7 +10,7 @@ export default function Sides({ children }) {
 
     useEffect(() => {
         if (auth.user) {
-            window.Echo.private(`respons.${auth.user.id}`)
+            window.Echo.private(`response.${auth.user.id}`)
                 .listen('SendResponse', (e) => {
                     router.reload({ preserveScroll: true })
                     console.log('event masuk: ', e)
@@ -57,7 +57,7 @@ export default function Sides({ children }) {
                     ), { duration: 6000, position: 'top-right' })
                 })
             return () => {
-                window.Echo.leave(`respons.${auth.user.id}`)
+                window.Echo.leave(`response.${auth.user.id}`)
             }
         }
     }, [auth.user])

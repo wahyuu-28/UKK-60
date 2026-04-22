@@ -71,9 +71,9 @@ export default function Detail({ aspiration, categories }) {
                     </div>
                     <div>
                         <h3 className='font-plus-jakarta font-bold text-xl mb-4'>Feedback Photos</h3>
-                        {aspiration.responses && aspiration.responses.length > 0 ? (
+                        {aspiration.response && aspiration.response.length > 0 ? (
                             <div className='grid grid-cols-2 gap-2 cursor-pointer'>
-                                {aspiration.responses.map((res, index) => (
+                                {aspiration.response.map((res, index) => (
                                     res.photo && (
                                         <img
                                             key={index}
@@ -106,7 +106,7 @@ export default function Detail({ aspiration, categories }) {
 
                 {image && (
                     <div className='bg-black/50 backdrop-blur-sm fixed inset-0 flex justify-center items-center' onClick={() => setImage(null)}>
-                        <div className='bg-white rounded-md px-4 py-4 shadow-md w-[70%]'>
+                        <div className='bg-white rounded-md px-4 py-4 shadow-md'>
                             <img src={`/storage/${image}`} className='shadow-lg' />
                         </div>
                     </div>

@@ -7,6 +7,8 @@ import { TbCancel } from 'react-icons/tb';
 import Sides from '../Layout/Sides'
 import { MdOutlineLocationOn } from 'react-icons/md';
 import { GoDotFill } from 'react-icons/go';
+import { format } from 'date-fns';
+import { id } from 'date-fns/locale';
 
 export default function Home({ status, recentAspi }) {
     const { auth } = usePage().props
@@ -70,12 +72,12 @@ export default function Home({ status, recentAspi }) {
             <div>
                 <h2 className="font-bold font-plus-jakarta my-8">Recent Aspirations</h2>
                 <div className='grid grid-cols-2 px-4 gap-3'>
-                    {recent.length > 0 ? (
-                        recent.map((item) => {
-                            const dateCreated = format(new Date(item.created_at), 'dd MMMM yyyy', { locale: idLocale });
+                    {recentAspi.length > 0 ? (
+                        recentAspi.map((item) => {
+                            const dateCreated = format(new Date(item.created_at), 'dd MMMM yyyy', { locale: id });
                             return (
-                                <Link href={`/student/aspirations/${item.id}`}>
-                                    <div key={item.id} className="relative">
+                                <Link key={item.id} href={`/student/aspirations/${item.id}`}>
+                                    <div className="relative">
 
                                         <img src={`/storage/${item.photo}`} className='rounded-t-lg aspect-video object-cover h-64 w-full' />
                                         <span className={`rounded-full font-inter font-semibold px-2 h-fit shadow-lg absolute top-4 right-4

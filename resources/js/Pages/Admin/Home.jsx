@@ -7,7 +7,7 @@ import { TbCancel } from 'react-icons/tb';
 import { MdOutlineLocationOn } from 'react-icons/md';
 import { GoDotFill } from 'react-icons/go';
 import { format } from 'date-fns';
-import { id as idLocale } from 'date-fns/locale';
+import { id, id as idLocale } from 'date-fns/locale';
 
 export default function Home({ status, recent }) {
 
@@ -72,10 +72,10 @@ export default function Home({ status, recent }) {
                 <div className='grid grid-cols-2 px-4 gap-3'>
                     {recent.length > 0 ? (
                         recent.map((item) => {
-                            const dateCreated = format(new Date(item.created_at), 'dd MMMM yyyy', { locale: idLocale });
+                            const dateCreated = format(new Date(item.created_at), 'dd MMMM yyyy', { locale: id });
                             return (
-                                <Link href={`/admin/aspirations/${item.id}`}>
-                                    <div key={item.id} className="relative">
+                                <Link key={item.id} href={`/admin/aspirations/${item.id}`}>
+                                    <div className="relative">
 
                                         <img src={`/storage/${item.photo}`} className='rounded-t-lg aspect-video object-cover h-64 w-full' />
                                         <span className={`rounded-full font-inter font-semibold px-2 h-fit shadow-lg absolute top-4 right-4

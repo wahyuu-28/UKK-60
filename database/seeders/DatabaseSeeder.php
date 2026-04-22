@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('wahyu1234'),
             'role' => 'student'
         ]);
-
+        
         Student::create([
             'user_id' => 2,
             'nis' => 1234567890,

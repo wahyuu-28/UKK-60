@@ -73,10 +73,10 @@ export default function Responses({ Notifications = [] }) {
 
                                                 <div className='flex-1 font-plus-jakarta'>
                                                     <div className='text-[14px] font-bold px-2 py-2 rounded capitalize bg-blue-50 text-blue-600'>
-                                                        {notif.respons?.subject || 'judul'}
+                                                        {notif.response?.subject || 'judul'}
                                                     </div>
                                                     <span>
-                                                        <p className='text-sm font-medium text-gray-500 line-clamp-1 capitalize'>{notif.respons?.caption || 'isi desk'}</p>
+                                                        <p className='text-sm font-medium text-gray-500 line-clamp-1 capitalize'>{notif.response?.caption || 'isi desk'}</p>
                                                     </span>
                                                 </div>
                                             </div>

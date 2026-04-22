@@ -135,6 +135,7 @@ export default function Aspirations({ aspirations, categories, filters }) {
                 setPreview(null)
             },
             onError: () => {
+                console.log(errors)
                 toast.error('Gagal membuat aspirasi baru!, mohon ikuti panduan')
             }
         })

@@ -11,7 +11,7 @@ import { motion, scale } from 'motion/react'
 const recentAspirations = [
     { id: 1, subject: 'Perbaikan ruang kelas', status: 'Process', image: Classroom, caption: 'Perbaikan kerusakan kelas XI Mesin yang tidak memungkinkan untuk dilaksanakannya proses ajar mengajar', location: 'Ruang 24', time: '16 menit lalu' },
     { id: 2, subject: 'Perbaikan PC Lab', status: 'Process', image: PC, caption: 'Perbaikan PC RPL yang kondisinya tidak memungkinkan untuk digunakan selama proses pembelajaran', location: 'Lab B', time: '3 jam yang lalu' },
-    { id: 3, subject: 'Perbaikan Papan Tulis', status: 'Verified', image: Whitebroad, caption: 'Penggantian papan tulis yang baru untuk kelas XI Geomatika 2 yang kondisinya tidak memungkinkan untuk dilaksanakannya proses ajar mengajar', location: 'Ruang 12', time: '1 hari lalu' },
+    { id: 3, subject: 'Perbaikan Papan Tulis', status: 'Completed', image: Whitebroad, caption: 'Penggantian papan tulis yang baru untuk kelas XI Geomatika 2 yang kondisinya tidak memungkinkan untuk dilaksanakannya proses ajar mengajar', location: 'Ruang 12', time: '1 hari lalu' },
 ]
 
 const containerText = {
@@ -96,7 +96,7 @@ export default function Recent() {
                             ${asp.status === 'Submitted' ? 'bg-gray-200 text-gray-600' :
                                 asp.status === 'Process' ? 'bg-amber-200 text-amber-600' :
                                     asp.status === 'Rejected' ? 'bg-red-200 text-red-600' :
-                                        asp.status === 'Complete' ? 'bg-blue-200 text-blue-600' :
+                                        asp.status === 'Completed' ? 'bg-blue-200 text-blue-600' :
                                             ''
                             }
                             `}
