@@ -58,7 +58,7 @@ export default function Sidebar() {
                 <div className="flex justify-center px-5 gap-5">
                     <CgProfile size={50} className="text-black" />
                     <div className="flex flex-col justify-center items-center font-plus-jakarta capitalize pb-4">
-                        <h1 className="font-bold text-black">
+                        <h1 className="font-bold text-center text-black">
                             {auth.user.name}
                         </h1>
                         <h3 className="font-medium text-black">

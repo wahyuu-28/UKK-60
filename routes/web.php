@@ -39,7 +39,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::post('/categories', [CategoryController::class, 'addCategory']);
     Route::get('response/{aspiration}', [AdminController::class, 'responsePage']);
     Route::post('/response/{aspiration}', [ResponseController::class, 'response']);
-    Route::put('/aspirations/{aspiration}', [AspirationController::class, 'editAspirations']);
+    Route::put('/aspirations/{aspiration}', [AspirationController::class, 'editAspiration']);
     Route::delete('/aspirations/{aspiration}', [AspirationController::class, 'desAspiration']);
     Route::put('/categories/{category}', [CategoryController::class, 'editCategory']);
     Route::delete('/categories/{category}', [CategoryController::class, 'desCategory']);

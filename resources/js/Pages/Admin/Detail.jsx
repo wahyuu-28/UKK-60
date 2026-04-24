@@ -9,6 +9,7 @@ import { AiOutlinePlus } from 'react-icons/ai'
 import { Plus } from 'lucide-react'
 import Tracking from '../Components/Tracking'
 import { LuMessageSquareText } from 'react-icons/lu'
+import toast from 'react-hot-toast'
 
 export default function Detail({ aspiration, categories }) {
     const { data, setData, post, delete: destroy, errors, reset } = useForm({
@@ -42,6 +43,11 @@ export default function Detail({ aspiration, categories }) {
             onSuccess: () => {
                 editModalOpen(false)
                 reset()
+                toast.success('Berhasil mengubah data')
+            },
+            onError: () => {
+                console.log(errors)
+                toast.error('Terjadi kesalahan')
             }
         })
     }

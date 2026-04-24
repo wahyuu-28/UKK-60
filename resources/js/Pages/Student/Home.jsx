@@ -29,11 +29,11 @@ export default function Home({ status, recentAspi }) {
                     <div className='flex justify-between items-start mb-4'>
                         <div className='p-2 rounded-xl bg-[#cffafe] border'>
                             <Send className='text-[#06b6d4] text-2xl' />
-                        </div>
+                        </div>  
                     </div>
                     {/* text */}
                     <div>
-                        <p className='font-plus-jakarta font-medium text-gray-500 text-sm'>Submitted</p>
+                        <p className='font-plus-jakarta font-medium text-gray-500 text-sm'>Terkirim</p>
                         <h3 className='font-inter text-2xl font-bold text-gray-900 mt-1 break-all'>{status.submitted}</h3>
                     </div>
                 </div>
@@ -48,7 +48,7 @@ export default function Home({ status, recentAspi }) {
                     </div>
                     {/* text */}
                     <div>
-                        <p className='font-plus-jakarta font-medium text-gray-500 text-sm'></p>
+                        <p className='font-plus-jakarta font-medium text-gray-500 text-sm'>Prosess</p>
                         <h3 className='font-inter text-2xl font-bold text-gray-900 mt-1 break-all'>{status.process}</h3>
                     </div>
                 </div>
@@ -63,7 +63,7 @@ export default function Home({ status, recentAspi }) {
                     </div>
                     {/* text */}
                     <div>
-                        <p className='font-plus-jakarta font-medium text-gray-500 text-sm'>Completed</p>
+                        <p className='font-plus-jakarta font-medium text-gray-500 text-sm'>Selesai</p>
                         <h3 className='font-inter text-2xl font-bold text-gray-900 mt-1 break-all'>{status.completed}</h3>
                     </div>
                 </div>

@@ -155,7 +155,7 @@ export default function Aspirations({ aspirations, categories, filters }) {
 
             <div className='flex justify-end my-4'>
                 <button className='bg-blue-700 px-2 py-2 font-inter rounded-md shadow-lg font-semibold hover:bg-white duration-200 border-2 text-white hover:text-black'
-                    onClick={() => setIsOpen(true)}>Add Aspiration</button>
+                    onClick={() => setIsOpen(true)}>Tambah aspirasi</button>
             </div>
 
             <form className='my-4' onSubmit={handleSearch}>
@@ -285,7 +285,7 @@ export default function Aspirations({ aspirations, categories, filters }) {
                                                     <FaUpload className='text-blue-600' />
                                                 </div>
                                                 <p className='text-lg font-inter font-semibold'>Upload Gambar</p>
-                                                <p className='text-[8px] font-inter font-light'>Mohon upload gambar dengan size max 2048mb</p>
+                                                <p className='text-[8px] font-inter font-light'>Mohon upload gambar dengan size max 2048kb/2mb</p>
 
                                             </div>
                                         )}
